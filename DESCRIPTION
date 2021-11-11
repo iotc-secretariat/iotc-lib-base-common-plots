@@ -1,0 +1,28 @@
+Package: iotc.base.common.plots
+Type: Package
+Title: IOTC base functions for common data plotting and visualization
+Version: 0.2.0
+Author: Fabio Fiorellato <fabio.fiorellato@fao.org>
+Maintainer: Fabio Fiorellato <fabio.fiorellato@fao.org>
+Description: Provides convenience methods to ensure standardized plots for all IOTC working party-related charts, including:
+    Catch time-series as stacked bar charts
+    Catch time-series as line charts, etc.
+    Geospatial maps (superimposed pie charts, heatmaps etc.)
+    [ ADD SOME MORE SPECS ]
+License: Private
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Depends:
+  dplyr,
+  data.table,
+  ggridges,
+  ggrepel,
+  ggnewscale,
+  scatterpie,
+  treemapify,
+  iotc.core.gis.cwp,
+  iotc.core.gis.maps,
+  iotc.core.utils.aes,
+  iotc.base.common.data
+
