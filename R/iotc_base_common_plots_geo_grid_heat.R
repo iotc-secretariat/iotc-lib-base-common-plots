@@ -7,7 +7,7 @@
 #'@param breaks Externally provided breaks. Alternative to \code{num_intervals}
 #'@param show_grid_borders when \code{TRUE}, each regular grid will have a darker border around it
 #'@param show_IO when \code{TRUE}, the layers for F51 and F57 are plotted on the map
-#'#'@param show_EEZs When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)
+#'@param show_EEZs When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)
 #'@param show_high_seas When \code{TRUE}, the overall high seas layer is plotted on the map
 #'@param standard_grid Transforms the input data in order to only use grids of the provided \code{standard_grid} type (one among \{ \code{grid_1x1}, \code{grid_5x5}, \code{grid_10x10}, \code{grid_10x20}, \code{grid_20x20}, \code{grid_30x30} \}). The transformation is based on pre-calculated mappings (see \code{[IOTCStatistics].[dbo].[CL_FISHING_GROUND_AGGREGATIONS]}) and might lead to data loss if no mapping exists for some of the input grid codes.
 #'@param palette A palette function capable of returning \code{n} colors. Defaults to \code{colorspace::heat_hcl}
