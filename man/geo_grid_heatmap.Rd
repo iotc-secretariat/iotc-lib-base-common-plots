@@ -37,8 +37,9 @@ geo_grid_heatmap(
 
 \item{show_grid_borders}{when \code{TRUE}, each regular grid will have a darker border around it}
 
-\item{show_IO}{when \code{TRUE}, the layers for F51 and F57 are plotted on the map
-#'@param show_EEZs When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)}
+\item{show_IO}{when \code{TRUE}, the layers for F51 and F57 are plotted on the map}
+
+\item{show_EEZs}{When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)}
 
 \item{show_high_seas}{When \code{TRUE}, the overall high seas layer is plotted on the map}
 
