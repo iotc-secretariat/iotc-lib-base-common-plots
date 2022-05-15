@@ -26,7 +26,7 @@ catch_pie = function(data,
       colors,
       num_legend_rows,
       callouts,
-      trim_labels
+      trim_labels = trim_labels
     )
   )
 }

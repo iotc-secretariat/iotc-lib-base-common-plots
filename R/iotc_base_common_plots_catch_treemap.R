@@ -26,7 +26,7 @@ catch_treemap = function(data,
       colors,
       num_legend_rows,
       show_percentages,
-      trim_labels
+      trim_labels = trim_labels
     )
   )
 }

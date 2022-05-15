@@ -28,7 +28,7 @@ catch_bar = function(data,
               scale = 1000,
               y_axis_label = "Total catch (x1,000 t)",
               x_breaks_every = 5,
-              trim_labels
+              trim_labels = trim_labels
     )
   )
 }
@@ -63,7 +63,7 @@ catch_bar_rel = function(data,
       num_legend_rows,
       y_axis_label = "% total catch",
       x_breaks_every = 5,
-      trim_labels
+      trim_labels = trim_labels
     )
   )
 }

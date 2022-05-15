@@ -31,7 +31,7 @@ catch_line = function(data,
       scale = 1000,
       y_axis_label = "Total catch (x1,000 t)",
       x_breaks_every = 5,
-      trim_labels
+      trim_labels = trim_labels
     )
   )
 }
