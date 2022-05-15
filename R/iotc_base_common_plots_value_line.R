@@ -12,6 +12,7 @@
 #'@param x_axis_label The label for the X axis
 #'@param y_axis_label The label for the Y axis
 #'@param x_breaks_every The size of uniform breaks on the X axis
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@export
 value_line = function(data,
@@ -25,7 +26,8 @@ value_line = function(data,
                       scale = 1,
                       x_axis_label = NA,
                       y_axis_label = "Values",
-                      x_breaks_every = 5) {
+                      x_breaks_every = 5,
+                      trim_labels = TRUE) {
   fail_if_empty(data)
 
   customized_colors = is_available(colors)
@@ -78,7 +80,9 @@ value_line = function(data,
   number_categories = length(unique(data$FILL_BY))
 
   categories = as.character(sort(unique(data$FILL_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+
+  if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
+  else labels = categories
 
   if(is.na(num_legend_rows)) {
     num_legend_rows = calculate_legend_rows(number_categories)

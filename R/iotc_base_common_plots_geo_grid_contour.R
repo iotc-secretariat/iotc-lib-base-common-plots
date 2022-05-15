@@ -15,6 +15,7 @@
 #'@param show_high_seas When \code{TRUE}, the overall high seas layer is plotted on the map
 #'@param standard_grid Transforms the input data in order to only use grids of the provided \code{standard_grid} type (one among \{ \code{grid_1x1}, \code{grid_5x5}, \code{grid_10x10}, \code{grid_10x20}, \code{grid_20x20}, \code{grid_30x30} \}). The transformation is based on pre-calculated mappings (see \code{[IOTCStatistics].[dbo].[CL_FISHING_GROUND_AGGREGATIONS]}) and might lead to data loss if no mapping exists for some of the input grid codes.
 #'@param legend_title The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
 #'@examples geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT)
 #'@examples geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), FLEET_CODE, uniform_fill = TRUE)
@@ -35,7 +36,8 @@ geo_grid_contourmap = function(data,
                                show_EEZs = FALSE,
                                show_high_seas = FALSE,
                                standard_grid = grid_5x5,
-                               legend_title = NULL) {
+                               legend_title = NULL,
+                               trim_labels = TRUE) {
   fail_if_empty(data)
 
   user_defined_colors = is_available(colors)
@@ -62,7 +64,7 @@ geo_grid_contourmap = function(data,
   if(!is.na(standard_grid)) data = spatially_disaggregate_geo(data, standard_grid)
 
   categories = as.character(sort(unique(data$FILL_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+  labels     = ifelse(trim_labels, unlist(lapply(categories, strlen_max_labels)), categories)
 
   data =
     prepare_map_data_contour(

@@ -23,7 +23,8 @@ geo_grid_piemap(
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
   legend_title = NULL,
-  show_scatterpie_legend = TRUE
+  show_scatterpie_legend = TRUE,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -62,6 +63,8 @@ geo_grid_piemap(
 \item{legend_title}{The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{VALUE}}
 
 \item{show_scatterpie_legend}{When \code{TRUE}, shows the scatterpie legend in the bottom-left corner of the map}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 
 \item{user_centroid}{When \code{TRUE}, pies are centered in the centroid location of the fishing ground they belong to. This might markedly differ from the default center of a regular grid when this contains a sensible proportion of land mass}
 }

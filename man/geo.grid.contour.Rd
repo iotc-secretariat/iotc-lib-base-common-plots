@@ -20,7 +20,8 @@ geo.grid.contour(
   show_EEZs = FALSE,
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \description{

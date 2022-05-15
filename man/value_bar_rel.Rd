@@ -15,7 +15,8 @@ value_bar_rel(
   num_legend_rows = NA,
   x_axis_label = NA,
   y_axis_label = "Values",
-  x_breaks_every = 5
+  x_breaks_every = 5,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ value_bar_rel(
 \item{y_axis_label}{The label for the Y axis}
 
 \item{x_breaks_every}{The size of uniform breaks on the X axis}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 the plot corresponding to the given input parameters

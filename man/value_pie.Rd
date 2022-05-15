@@ -12,7 +12,8 @@ value_pie(
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
-  callouts = FALSE
+  callouts = FALSE,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ value_pie(
 \item{num_legend_rows}{The number of rows to display in the legend}
 
 \item{callouts}{If \code{TRUE} plots informative callouts for each category}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 the plot corresponding to the given input parameters

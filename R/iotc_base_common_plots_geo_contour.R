@@ -12,6 +12,7 @@
 #'@param uniform_fill When \code{TRUE} each area will be colored uniformly, otherwise its coloring will be proportional to the density
 #'@param contour_var The variable to use to determine the contour of the regions. One among \{ \code{"count"}, \code{"density"}, \code{"ndensity"} \}. See also \code{ggplot2::stat_density2d_filled}
 #'@param legend_title The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
 #'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT)
 #'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT, uniform_fill = TRUE)
@@ -29,7 +30,8 @@ geo_contourmap = function(data,
                           colors = NA,
                           uniform_fill = FALSE,
                           contour_var = "ndensity", #Defaults to normalized density
-                          legend_title = NULL) {
+                          legend_title = NULL,
+                          trim_labels = TRUE) {
   fail_if_empty(data)
 
   user_defined_colors = is_available(colors)
@@ -45,7 +47,9 @@ geo_contourmap = function(data,
   colnames(colors)[which(colnames(colors) == categorize_by)] = "CATEGORIZE_BY"
 
   categories = as.character(sort(unique(data$FILL_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+
+  if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
+  else labels = categories
 
   # See: https://stackoverflow.com/questions/53075331/error-using-geom-density-2d-in-r-computation-failed-in-stat-density2d-b
   bandwidth = c(MASS::bandwidth.nrd(data$LON), MASS::bandwidth.nrd(data$LAT))

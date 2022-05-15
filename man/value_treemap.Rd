@@ -12,7 +12,8 @@ value_treemap(
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
-  show_percentages = TRUE
+  show_percentages = TRUE,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -29,6 +30,8 @@ value_treemap(
 \item{num_legend_rows}{The number of rows to display in the legend}
 
 \item{show_percentages}{\code{TRUE} to display percentages of each area over the total}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 the plot corresponding to the given input parameters

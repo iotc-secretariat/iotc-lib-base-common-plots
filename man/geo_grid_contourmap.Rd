@@ -20,7 +20,8 @@ geo_grid_contourmap(
   show_EEZs = FALSE,
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -55,6 +56,8 @@ geo_grid_contourmap(
 \item{standard_grid}{Transforms the input data in order to only use grids of the provided \code{standard_grid} type (one among \{ \code{grid_1x1}, \code{grid_5x5}, \code{grid_10x10}, \code{grid_10x20}, \code{grid_20x20}, \code{grid_30x30} \}). The transformation is based on pre-calculated mappings (see \code{[IOTCStatistics].[dbo].[CL_FISHING_GROUND_AGGREGATIONS]}) and might lead to data loss if no mapping exists for some of the input grid codes.}
 
 \item{legend_title}{The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 The \code{ggplot2} object representing the plot

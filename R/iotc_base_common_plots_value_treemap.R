@@ -7,6 +7,7 @@
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
 #'@param show_percentages \code{TRUE} to display percentages of each area over the total
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@export
 value_treemap = function(data,
@@ -15,7 +16,8 @@ value_treemap = function(data,
                          max_categories = NA,
                          colors = NA,
                          num_legend_rows = 2,
-                         show_percentages = TRUE) {
+                         show_percentages = TRUE,
+                         trim_labels = TRUE) {
   fail_if_empty(data)
 
   customized_colors = is_available(colors)
@@ -37,7 +39,9 @@ value_treemap = function(data,
   }
 
   categories = as.character(sort(unique(data$FILL_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+
+  if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
+  else labels = categories
 
   colors = head(colors, length(unique(data$FILL_BY)))
 

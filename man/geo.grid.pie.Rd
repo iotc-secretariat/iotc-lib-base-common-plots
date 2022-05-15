@@ -23,7 +23,8 @@ geo.grid.pie(
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
   legend_title = NULL,
-  show_scatterpie_legend = TRUE
+  show_scatterpie_legend = TRUE,
+  trim_labels = TRUE
 )
 }
 \description{

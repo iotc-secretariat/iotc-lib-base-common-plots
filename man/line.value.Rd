@@ -16,7 +16,8 @@ line.value(
   scale = 1,
   x_axis_label = NA,
   y_axis_label = "Values",
-  x_breaks_every = 5
+  x_breaks_every = 5,
+  trim_labels = TRUE
 )
 }
 \description{

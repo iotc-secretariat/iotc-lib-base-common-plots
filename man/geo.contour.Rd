@@ -17,7 +17,8 @@ geo.contour(
   colors = NA,
   uniform_fill = FALSE,
   contour_var = "ndensity",
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \description{

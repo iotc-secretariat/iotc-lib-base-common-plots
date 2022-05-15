@@ -15,7 +15,8 @@ geo.plot(
   show_high_seas = FALSE,
   colors = NA,
   alpha = 0.7,
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \description{

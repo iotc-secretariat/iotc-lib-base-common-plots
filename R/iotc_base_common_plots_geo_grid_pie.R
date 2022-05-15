@@ -18,6 +18,7 @@
 #'@param standard_grid Transforms the input data in order to only use grids of the provided \code{standard_grid} type (one among \{ \code{grid_1x1}, \code{grid_5x5}, \code{grid_10x10}, \code{grid_10x20}, \code{grid_20x20}, \code{grid_30x30} \}). The transformation is based on pre-calculated mappings (see \code{[IOTCStatistics].[dbo].[CL_FISHING_GROUND_AGGREGATIONS]}) and might lead to data loss if no mapping exists for some of the input grid codes.
 #'@param legend_title The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{VALUE}
 #'@param show_scatterpie_legend When \code{TRUE}, shows the scatterpie legend in the bottom-left corner of the map
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
 #'@export
 geo_grid_piemap = function(data,
@@ -38,7 +39,8 @@ geo_grid_piemap = function(data,
                            show_high_seas = FALSE,
                            standard_grid = grid_5x5,
                            legend_title = NULL,
-                           show_scatterpie_legend = TRUE) {
+                           show_scatterpie_legend = TRUE,
+                           trim_labels = TRUE) {
   fail_if_empty(data)
 
   if(yearly_average & !("YEAR" %in% colnames(data))) {
@@ -76,7 +78,9 @@ geo_grid_piemap = function(data,
   if(!is.na(standard_grid)) data = spatially_disaggregate_geo(data, standard_grid)
 
   categories = as.character(sort(unique(data$FILL_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+
+  if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
+  else labels = categories
 
   num_categories = length(categories)
 

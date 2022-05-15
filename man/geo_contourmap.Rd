@@ -17,7 +17,8 @@ geo_contourmap(
   colors = NA,
   uniform_fill = FALSE,
   contour_var = "ndensity",
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ geo_contourmap(
 \item{contour_var}{The variable to use to determine the contour of the regions. One among \{ \code{"count"}, \code{"density"}, \code{"ndensity"} \}. See also \code{ggplot2::stat_density2d_filled}}
 
 \item{legend_title}{The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 The \code{ggplot2} object representing the plot

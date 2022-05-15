@@ -10,6 +10,7 @@
 #'@param colors The colors to assign to each \code{fill_by} category. If not specified, it is determined automatically from \code{fill_by} (as long as this is one of the standard categories for which a color mapping exists)
 #'@param alpha The transparency value to use when plotting the points
 #'@param legend_title The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
 #'@export
 #'@examples geo_plot(ros.raw.SETS(years = 2018), FISHERY_GROUP_CODE, START_LON, START_LAT)
@@ -24,7 +25,8 @@ geo_plot = function(data,
                     show_high_seas = FALSE,
                     colors = NA,
                     alpha = .7,
-                    legend_title = NULL) {
+                    legend_title = NULL,
+                    trim_labels = TRUE) {
   fail_if_empty(data)
 
   user_defined_colors = is_available(colors)
@@ -38,7 +40,7 @@ geo_plot = function(data,
   colnames(colors)[which(colnames(colors) == categorize_by)] = "CATEGORIZE_BY"
 
   categories = as.character(sort(unique(data$CATEGORIZE_BY)))
-  labels     = unlist(lapply(categories, strlen_max_labels))
+  labels     = ifelse(trim_labels, unlist(lapply(categories, strlen_max_labels)), categories)
 
   map =
     IO_map(

@@ -15,7 +15,8 @@ geo_plot(
   show_high_seas = FALSE,
   colors = NA,
   alpha = 0.7,
-  legend_title = NULL
+  legend_title = NULL,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -40,6 +41,8 @@ geo_plot(
 \item{alpha}{The transparency value to use when plotting the points}
 
 \item{legend_title}{The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 The \code{ggplot2} object representing the plot
