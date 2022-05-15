@@ -10,7 +10,8 @@ line.catch(
   max_categories = NA,
   colors = NA,
   plot_points = FALSE,
-  num_legend_rows = NA
+  num_legend_rows = NA,
+  trim_labels = TRUE
 )
 }
 \description{

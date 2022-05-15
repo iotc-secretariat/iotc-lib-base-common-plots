@@ -6,25 +6,27 @@
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
 #'@param show_percentages \code{TRUE} to display percentages of each area over the total
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@examples catch_pie(data, fill_by = "SPECIES", colors = factorize_species(all_species_colors()))
 #'@export
-catch_treemap = function(
-  data,
-  fill_by,
-  max_categories = NA,
-  colors = NA,
-  num_legend_rows = 2,
-  show_percentages = TRUE) {
+catch_treemap = function(data,
+                         fill_by,
+                         max_categories = NA,
+                         colors = NA,
+                         num_legend_rows = 2,
+                         show_percentages = TRUE,
+                         trim_labels = TRUE) {
   return(
-    value_treemap(
+    ?value_treemap(
       data,
       CATCH,
       fill_by,
       max_categories,
       colors,
       num_legend_rows,
-      show_percentages
+      show_percentages,
+      trim_labels
     )
   )
 }

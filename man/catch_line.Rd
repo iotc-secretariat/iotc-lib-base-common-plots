@@ -11,7 +11,8 @@ catch_line(
   max_categories = NA,
   colors = NA,
   plot_points = FALSE,
-  num_legend_rows = NA
+  num_legend_rows = NA,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ catch_line(
 \item{plot_points}{A flag to force plotting solid dots at each data point}
 
 \item{num_legend_rows}{The number of rows to display in the legend}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 the plot corresponding to the given input parameters

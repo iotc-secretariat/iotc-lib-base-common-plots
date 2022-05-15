@@ -9,7 +9,8 @@ bar.catch.rel(
   fill_by,
   max_categories = NA,
   colors = NA,
-  num_legend_rows = NA
+  num_legend_rows = NA,
+  trim_labels = TRUE
 )
 }
 \description{

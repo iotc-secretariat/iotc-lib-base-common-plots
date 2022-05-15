@@ -10,7 +10,8 @@ catch_bar_rel(
   fill_by,
   max_categories = NA,
   colors = NA,
-  num_legend_rows = NA
+  num_legend_rows = NA,
+  trim_labels = TRUE
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ catch_bar_rel(
 \item{colors}{A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter}
 
 \item{num_legend_rows}{The number of rows to display in the legend}
+
+\item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
 }
 \value{
 the plot corresponding to the given input parameters

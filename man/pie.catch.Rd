@@ -10,7 +10,8 @@ pie.catch(
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
-  callouts = FALSE
+  callouts = FALSE,
+  trim_labels = TRUE
 )
 }
 \description{

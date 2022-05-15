@@ -5,6 +5,7 @@
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@examples catch_bar(NC_est(), SPECIES_CODE)                   # Bar chart with yearly estimated catches by species code
 #'@examples catch_bar(NC_est(), FLEET_CODE, max_categories = 5) # Bar chart with yearly estimated catches by fleet code, limited to the first five fleets in terms of total catches
@@ -14,7 +15,8 @@ catch_bar = function(data,
                      fill_by,
                      max_categories = NA,
                      colors = NA,
-                     num_legend_rows = NA) {
+                     num_legend_rows = NA,
+                     trim_labels = TRUE) {
   return(
     value_bar(data,
               CATCH,
@@ -25,7 +27,8 @@ catch_bar = function(data,
               num_legend_rows,
               scale = 1000,
               y_axis_label = "Total catch (x1,000 t)",
-              x_breaks_every = 5
+              x_breaks_every = 5,
+              trim_labels
     )
   )
 }
@@ -37,6 +40,7 @@ catch_bar = function(data,
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@examples catch_bar_expanded(NC_est(), SPECIES_CODE)                   # Expanded bar chart with yearly estimated catches by species code
 #'@examples catch_bar_expanded(NC_est(), FLEET_CODE, max_categories = 5) # Expanded bar chart with yearly estimated catches by fleet code, limited to the first five fleets in terms of total catches
@@ -46,7 +50,8 @@ catch_bar_rel = function(data,
                          fill_by,
                          max_categories = NA,
                          colors = NA,
-                         num_legend_rows = NA) {
+                         num_legend_rows = NA,
+                         trim_labels = TRUE) {
   return(
     value_bar_rel(
       data,
@@ -57,7 +62,8 @@ catch_bar_rel = function(data,
       colors,
       num_legend_rows,
       y_axis_label = "% total catch",
-      x_breaks_every = 5
+      x_breaks_every = 5,
+      trim_labels
     )
   )
 }

@@ -6,6 +6,7 @@
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
 #'@param callouts If \code{TRUE} plots informative callouts for each category
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@examples catch_pie(data, fill_by = "SPECIES", colors = factorize_species(all_species_colors()))
 #'@export
@@ -14,7 +15,8 @@ catch_pie = function(data,
                      max_categories = NA,
                      colors = NA,
                      num_legend_rows = 2,
-                     callouts = FALSE) {
+                     callouts = FALSE,
+                     trim_labels = TRUE) {
   return(
     value_pie(
       data,
@@ -23,7 +25,8 @@ catch_pie = function(data,
       max_categories,
       colors,
       num_legend_rows,
-      callouts
+      callouts,
+      trim_labels
     )
   )
 }

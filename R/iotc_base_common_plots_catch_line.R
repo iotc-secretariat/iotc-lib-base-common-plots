@@ -6,6 +6,7 @@
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param plot_points A flag to force plotting solid dots at each data point
 #'@param num_legend_rows The number of rows to display in the legend
+#'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return the plot corresponding to the given input parameters
 #'@examples catch_line(NC_est(species_group_codes = "TUNAS"), SPECIES_CODE)
 #'@examples catch_line(NC_est(species_group_codes = "TUNAS"), SPECIES_CODE, colors = color_table(unique_colors(32)))
@@ -15,7 +16,8 @@ catch_line = function(data,
                       max_categories = NA,
                       colors = NA,
                       plot_points = FALSE,
-                      num_legend_rows = NA) {
+                      num_legend_rows = NA,
+                      trim_labels = TRUE) {
   return(
     value_line(
       data,
@@ -28,7 +30,8 @@ catch_line = function(data,
       num_legend_rows,
       scale = 1000,
       y_axis_label = "Total catch (x1,000 t)",
-      x_breaks_every = 5
+      x_breaks_every = 5,
+      trim_labels
     )
   )
 }
