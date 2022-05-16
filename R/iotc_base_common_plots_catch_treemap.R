@@ -18,7 +18,7 @@ catch_treemap = function(data,
                          show_percentages = TRUE,
                          trim_labels = TRUE) {
   return(
-    ?value_treemap(
+    value_treemap(
       data,
       CATCH,
       fill_by,
