@@ -154,8 +154,8 @@ initialize_plot = function(data, aesthetics = NA, custom_theme = theme_bw) {
 #'@param height The plot height
 #'@return The plot itself
 #'@export
-save_plot = function(filename, plot, width = 6.5, height = 5) {
-  ggsave(filename = filename, plot, width = width, height = height)
+save_plot = function(filename, plot, width = 6.5, height = 5, background = "white") {
+  ggsave(filename = filename, plot, width = width, height = height, bg = ifelse(is.na(background), "transparent", background))
 
   return (invisible(plot))
 }

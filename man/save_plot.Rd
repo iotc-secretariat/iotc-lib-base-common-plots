@@ -4,7 +4,7 @@
 \alias{save_plot}
 \title{Saves a (gg)plot with standard width and height}
 \usage{
-save_plot(filename, plot, width = 6.5, height = 5)
+save_plot(filename, plot, width = 6.5, height = 5, background = "white")
 }
 \arguments{
 \item{filename}{The name of the output file}
