@@ -16,7 +16,7 @@ value_line(
   num_legend_rows = NA,
   scale = 1,
   x_axis_label = NA,
-  y_axis_label = "Values",
+  y_axis_label = "\%",
   x_breaks_every = 5,
   trim_labels = TRUE
 )

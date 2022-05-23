@@ -131,7 +131,7 @@ value_bar_rel = function(data,
                          colors = NA,
                          num_legend_rows = NA,
                          x_axis_label = NA,
-                         y_axis_label = "Values",
+                         y_axis_label = "%",
                          x_breaks_every = 5,
                          trim_labels = TRUE) {
   fail_if_empty(data)
@@ -168,8 +168,6 @@ value_bar_rel = function(data,
   dMax = floor(xMax / x_breaks_every) * x_breaks_every
 
   breaks = c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur)
-
-  yData = data[, .(VALUE = sum(VALUE)), keyby = .(TIME)]
 
   yMin = 0
   yMax = 100
