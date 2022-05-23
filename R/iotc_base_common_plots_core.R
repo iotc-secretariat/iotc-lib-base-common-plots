@@ -40,7 +40,7 @@ calculate_legend_rows = function(number_of_categories) {
   return (max(1, (floor(number_of_categories / 4))))
 }
 
-initialize_species_colors_by_category = function(category, species) {
+initialize_species_colors_by_category = function(category, species, amount = 0.2) {
   BASE_COLOR = copy(colors_for_species_category(category))
 
   species_for_category = species[SPECIES_CATEGORY_CODE == category & !is.na(SORT)][order(+SORT)]
@@ -48,14 +48,14 @@ initialize_species_colors_by_category = function(category, species) {
 
   species_for_category = species_for_category[order(-SORT)]
 
-  fill = darken(BASE_COLOR$FILL, amount = 0.2)
+  fill = darken(BASE_COLOR$FILL, amount = amount)
 
   for(r in 1:nrow(species_for_category)) {
     record = species_for_category[r]
 
     add_species_colors(record$CODE, fill)
 
-    fill = lighten(fill, amount = 0.2)
+    fill = lighten(fill, amount = amount)
   }
 }
 
@@ -85,7 +85,7 @@ initialize_all_species_colors = function(connection = DB_IOTDB()) {
   initialize_species_colors_by_category(SC_SEERFISH, species)
   initialize_species_colors_by_category(SC_NERITIC,  species)
   initialize_species_colors_by_category(SC_TEMPERATE,species)
-  initialize_species_colors_by_category(SC_TROPICAL, species)
+  initialize_species_colors_by_category(SC_TROPICAL, species, amount = 0.4)
   initialize_species_colors_by_category(SC_TUNAS_NEI,species)
   initialize_species_colors_by_category(SC_SHARKS,   species)
   initialize_species_colors_by_category(SC_RAYS,     species)
