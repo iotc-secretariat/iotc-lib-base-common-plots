@@ -6,7 +6,7 @@
 \usage{
 LW.bin.hex(
   data,
-  facet_by = SPECIES_CODE,
+  facet_by = C_SPECIES_CODE,
   swap_axis = FALSE,
   bins = 75,
   num_breaks = 5,

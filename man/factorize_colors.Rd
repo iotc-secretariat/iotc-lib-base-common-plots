@@ -4,16 +4,16 @@
 \alias{factorize_colors}
 \title{Produces the color factors for a data frame given a \code{FILL_BY} column}
 \usage{
-factorize_colors(data, fill_by = SPECIES_CODE)
+factorize_colors(data, fill_by = C_SPECIES_CODE)
 }
 \arguments{
 \item{data}{A data frame}
 
 \item{fill_by}{The name of the column that contains the factors to use to colorize the results. Should be one among
-{\code{FISHING_GROUND_CODE}, \code{FLEET_CODE},
-\code{IUCN_STATUS_CODE}, \code{SPECIES_WP_CODE}, \code{SPECIES_GROUP_CODE}, \code{SPECIES_CATEGORY_CODE}, \code{SPECIES_CODE},
-\code{FISHERY_TYPE_CODE}, \code{FISHERY_GROUP_CODE}, \code{FISHERY_CODE}, \code{GEAR_CODE},
-\code{QUALITY_CODE}, \code{FATE_TYPE_CODE}, \code{FATE_CODE}, \code{CONDITION_TYPE_CODE}, \code{CONDITION_CODE}, \code{RAISE_CODE}}}
+{\code{C_FISHING_GROUND_CODE}, \code{C_FLEET_CODE},
+\code{C_IUCN_STATUS_CODE}, \code{C_SPECIES_WP_CODE}, \code{C_SPECIES_GROUP_CODE}, \code{C_SPECIES_CATEGORY_CODE}, \code{C_SPECIES_CODE},
+\code{C_FISHERY_TYPE_CODE}, \code{C_FISHERY_GROUP_CODE}, \code{C_FISHERY_CODE}, \code{C_GEAR_CODE},
+\code{C_QUALITY_CODE}, \code{C_FATE_TYPE_CODE}, \code{C_FATE_CODE}, \code{C_CONDITION_TYPE_CODE}, \code{C_CONDITION_CODE}, \code{C_RAISE_CODE}}}
 }
 \value{
 the color factors to use

@@ -1,5 +1,5 @@
 #'Implementation of a contour plot based on a set of given georeferenced observations.
-#'@param data The data (shall contain a \code{FISHING_GROUND_CODE} column)
+#'@param data The data (shall contain a \code{C_FISHING_GROUND_CODE} column)
 #'@param categorize_by The name of the column (in \code{data} that contains the categories)
 #'@param longitude The name of the column (in \code{data}) that contains the \code{LONGITUDE} information
 #'@param latitude The name of the column (in \code{data}) that contains the \code{LATITUDE} information
@@ -14,9 +14,9 @@
 #'@param legend_title The title to use for the legend (none if \code{NULL}). Defaults to the value provided for \code{FILL_BY}
 #'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
-#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT)
-#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT, uniform_fill = TRUE)
-#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT, contour_var = "count",  uniform_fill = TRUE)
+#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT)
+#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT, uniform_fill = TRUE)
+#'@examples geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT, contour_var = "count",  uniform_fill = TRUE)
 #'@export
 geo_contourmap = function(data,
                           categorize_by,

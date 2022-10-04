@@ -8,7 +8,7 @@ for all fisheries combined.}
 data_quality_line(data, data_set = "NC")
 }
 \arguments{
-\item{data}{A data frame containing data quality records  by \code{YEAR}, \code{FLEET_CODE}, \code{FISHERY_CODE} and \code{SPECIES_CODE}}
+\item{data}{A data frame containing data quality records  by \code{C_YEAR}, \code{C_FLEET_CODE}, \code{C_FISHERY_CODE} and \code{C_SPECIES_CODE}}
 
 \item{data_set}{One of the data sets for which data quality should be plot (one among \code{NC}, \code{CE} and \code{SF})}
 }

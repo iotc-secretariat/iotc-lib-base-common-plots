@@ -6,7 +6,7 @@
 \usage{
 catch_last_trends_bar(
   data,
-  categorize_by = "FISHERY_GROUP",
+  categorize_by = C_FISHERY_GROUP,
   colors = factorize_fishery_groups(fishery_group_colors_for(data))
 )
 }

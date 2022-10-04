@@ -16,7 +16,7 @@ catch_treemap(
 )
 }
 \arguments{
-\item{data}{A data frame containing nominal catches by \code{YEAR} and a given factor}
+\item{data}{A data frame containing nominal catches by \code{C_YEAR} and a given factor}
 
 \item{fill_by}{The name of the column to be used to colorize the bar components}
 
@@ -38,5 +38,5 @@ Plots nominal catches by species as a treemap chart. The original data should be
 and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the bars
 }
 \examples{
-catch_pie(data, fill_by = "SPECIES", colors = factorize_species(all_species_colors()))
+catch_pie(data, fill_by = C_SPECIES, colors = factorize_species(all_species_colors()))
 }

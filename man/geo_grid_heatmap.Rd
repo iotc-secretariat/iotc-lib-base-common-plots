@@ -23,11 +23,11 @@ geo_grid_heatmap(
 )
 }
 \arguments{
-\item{data}{The data (shall contain a \code{FISHING_GROUND_CODE} column)}
+\item{data}{The data (shall contain a \code{C_FISHING_GROUND_CODE} column)}
 
 \item{value}{The name of the column (in \code{data}) that contains the value to plot}
 
-\item{yearly_average}{If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{YEAR} column)}
+\item{yearly_average}{If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)}
 
 \item{num_intervals}{The number of intervals ('breaks') to split the range of values into. The result will be calculated as the quantiles with probabilities increasing by \code{with n * 1 / num_intervals} at each step.}
 

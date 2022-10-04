@@ -6,7 +6,7 @@
 \usage{
 lw_plot(
   data,
-  categorize_by = SPECIES_CODE,
+  categorize_by = C_SPECIES_CODE,
   swap_axis = FALSE,
   jitter_x = TRUE,
   jitter_y = FALSE,
@@ -17,7 +17,7 @@ lw_plot(
 \arguments{
 \item{data}{The source data that shall contain a \code{LENGTH} and a \code{WEIGHT} column}
 
-\item{categorize_by}{The data column that contains the categories for each series. Defaults to \code{SPECIES_CODE}}
+\item{categorize_by}{The data column that contains the categories for each series. Defaults to \code{C_SPECIES_CODE}}
 
 \item{swap_axis}{If \code{TRUE} weights will be mapped to the X-axis and lengths to the Y-axis}
 
@@ -34,6 +34,6 @@ X-Y plot of length / value pairs
 }
 \examples{
 lw_plot(ros.LW(species_codes = "BET"))
-lw_plot(ros.LW(species_codes = "BET"), categorize_by = FLEET_CODE)
-lw_plot(ros.LW(species_codes = "BET"), categorize_by = LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16)))
+lw_plot(ros.LW(species_codes = "BET"), categorize_by = C_FLEET_CODE)
+lw_plot(ros.LW(species_codes = "BET"), categorize_by = C_LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16)))
 }

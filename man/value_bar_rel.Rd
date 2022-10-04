@@ -2,13 +2,13 @@
 % Please edit documentation in R/iotc_base_common_plots_value_bar.R
 \name{value_bar_rel}
 \alias{value_bar_rel}
-\title{Plots relative generic 'values' by a time-variable (generally \code{YEAR}) as stacked bars. The original data should be grouped by year
+\title{Plots relative generic 'values' by a time-variable (generally \code{C_YEAR}) as stacked bars. The original data should be grouped by year
 and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar}
 \usage{
 value_bar_rel(
   data,
   value,
-  time = YEAR,
+  time = C_YEAR,
   fill_by,
   max_categories = NA,
   colors = NA,
@@ -20,7 +20,7 @@ value_bar_rel(
 )
 }
 \arguments{
-\item{data}{A data frame containing values by \code{YEAR} and a given factor}
+\item{data}{A data frame containing values by \code{C_YEAR} and a given factor}
 
 \item{value}{The name of the column holding the actual values}
 
@@ -46,6 +46,6 @@ value_bar_rel(
 the plot corresponding to the given input parameters
 }
 \description{
-Plots relative generic 'values' by a time-variable (generally \code{YEAR}) as stacked bars. The original data should be grouped by year
+Plots relative generic 'values' by a time-variable (generally \code{C_YEAR}) as stacked bars. The original data should be grouped by year
 and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar
 }

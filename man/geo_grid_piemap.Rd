@@ -28,13 +28,13 @@ geo_grid_piemap(
 )
 }
 \arguments{
-\item{data}{The data (shall contain a \code{FISHING_GROUND_CODE} column)}
+\item{data}{The data (shall contain a \code{C_FISHING_GROUND_CODE} column)}
 
 \item{value}{The name of the column (in \code{data}) that contains the value to plot}
 
 \item{fill_by}{The name of the column (in \code{data} that contains the categories)}
 
-\item{yearly_average}{If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{YEAR} column)}
+\item{yearly_average}{If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)}
 
 \item{max_categories}{The maximum number of \code{fill_by} categories to display. When specified, categories are sorted by their total value (in \code{data})) and only the first \code{max_categories} are kept. Everything else is assigned to a generic '\code{All other}' category.}
 

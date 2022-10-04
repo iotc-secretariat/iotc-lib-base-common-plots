@@ -3,7 +3,7 @@
 \name{value_pareto}
 \alias{value_pareto}
 \title{Pareto plot of values by two factors, one used to determine the categories on the X axis and another to determine the
-sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).}
+sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).}
 \usage{
 value_pareto(
   data,
@@ -19,7 +19,7 @@ value_pareto(
 )
 }
 \arguments{
-\item{data}{A data frame containing values by \code{YEAR} and at least two given factors (category / fill)}
+\item{data}{A data frame containing values by \code{C_YEAR} and at least two given factors (category / fill)}
 
 \item{value}{The name of the column holding the actual values}
 
@@ -44,5 +44,5 @@ the plot corresponding to the given input parameters
 }
 \description{
 Pareto plot of values by two factors, one used to determine the categories on the X axis and another to determine the
-sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).
+sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).
 }

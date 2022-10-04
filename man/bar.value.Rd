@@ -7,7 +7,7 @@
 bar.value(
   data,
   value,
-  time = YEAR,
+  time = C_YEAR,
   fill_by,
   max_categories = NA,
   colors = NA,

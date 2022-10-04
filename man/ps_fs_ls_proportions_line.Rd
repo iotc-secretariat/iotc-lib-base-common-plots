@@ -7,7 +7,7 @@
 ps_fs_ls_proportions_line(data)
 }
 \arguments{
-\item{data}{A data table whose \code{FISHERY_CODE} column distinguishes between PS FS and PS LS}
+\item{data}{A data table whose \code{C_FISHERY_CODE} column distinguishes between PS FS and PS LS}
 }
 \value{
 The plot

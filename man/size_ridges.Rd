@@ -6,7 +6,7 @@
 \usage{
 size_ridges(
   data,
-  categorize_by = FISHERY_CODE,
+  categorize_by = C_FISHERY_CODE,
   colors = NA,
   rel_min_height = 0,
   scale = 3,

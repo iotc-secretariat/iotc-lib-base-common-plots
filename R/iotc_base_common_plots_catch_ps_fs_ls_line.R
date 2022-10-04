@@ -1,5 +1,5 @@
 #'Plots the proportion of FS vs. LS catches for the most common industrial purse seine fleets (EUESP, EUFRA, SYC)
-#'@param data A data table whose \code{FISHERY_CODE} column distinguishes between PS FS and PS LS
+#'@param data A data table whose \code{C_FISHERY_CODE} column distinguishes between PS FS and PS LS
 #'@return The plot
 #'@export
 ps_fs_ls_proportions_line = function(data) {

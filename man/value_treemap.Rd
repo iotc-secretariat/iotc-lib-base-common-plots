@@ -17,7 +17,7 @@ value_treemap(
 )
 }
 \arguments{
-\item{data}{A data frame containing values by \code{YEAR} and a given factor}
+\item{data}{A data frame containing values by \code{C_YEAR} and a given factor}
 
 \item{value}{The name of the column holding the actual values}
 

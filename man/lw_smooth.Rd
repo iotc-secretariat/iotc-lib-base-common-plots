@@ -17,5 +17,5 @@ lw_smooth(plot, show_ci = TRUE, level = 0.95)
 Computes the smoothed conditional means of the original L-W data for a given X-Y LW plot
 }
 \examples{
-lw_smooth(lw_plot(ros.LW(species_codes = "BET", length_measure_type_codes = c("EF", "FL", "TL", "PC")), categorize_by = LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16))))
+lw_smooth(lw_plot(ros.LW(species_codes = "BET", length_measure_type_codes = c("EF", "FL", "TL", "PC")), categorize_by = C_LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16))))
 }

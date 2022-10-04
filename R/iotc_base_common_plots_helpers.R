@@ -1,35 +1,35 @@
 #'Produces the color factors for a data frame given a \code{FILL_BY} column
 #'@param data A data frame
 #'@param fill_by The name of the column that contains the factors to use to colorize the results. Should be one among
-#'{\code{FISHING_GROUND_CODE}, \code{FLEET_CODE},
-#' \code{IUCN_STATUS_CODE}, \code{SPECIES_WP_CODE}, \code{SPECIES_GROUP_CODE}, \code{SPECIES_CATEGORY_CODE}, \code{SPECIES_CODE},
-#' \code{FISHERY_TYPE_CODE}, \code{FISHERY_GROUP_CODE}, \code{FISHERY_CODE}, \code{GEAR_CODE},
-#' \code{QUALITY_CODE}, \code{FATE_TYPE_CODE}, \code{FATE_CODE}, \code{CONDITION_TYPE_CODE}, \code{CONDITION_CODE}, \code{RAISE_CODE}}
+#'{\code{C_FISHING_GROUND_CODE}, \code{C_FLEET_CODE},
+#' \code{C_IUCN_STATUS_CODE}, \code{C_SPECIES_WP_CODE}, \code{C_SPECIES_GROUP_CODE}, \code{C_SPECIES_CATEGORY_CODE}, \code{C_SPECIES_CODE},
+#' \code{C_FISHERY_TYPE_CODE}, \code{C_FISHERY_GROUP_CODE}, \code{C_FISHERY_CODE}, \code{C_GEAR_CODE},
+#' \code{C_QUALITY_CODE}, \code{C_FATE_TYPE_CODE}, \code{C_FATE_CODE}, \code{C_CONDITION_TYPE_CODE}, \code{C_CONDITION_CODE}, \code{C_RAISE_CODE}}
 #'@return the color factors to use
 #'@export
-factorize_colors = function(data, fill_by = SPECIES_CODE) {
-  if(fill_by %in% c(QUARTER))                                 return (factorize_quarters(quarter_colors_for(data)))
-  if(fill_by %in% c(FISHING_GROUND, FISHING_GROUND_CODE))     return (factorize_fishing_grounds(fishing_ground_colors_for(data)))
+factorize_colors = function(data, fill_by = C_SPECIES_CODE) {
+  if(fill_by %in% c(C_QUARTER))                                   return (factorize_quarters(quarter_colors_for(data)))
+  if(fill_by %in% c(C_FISHING_GROUND, C_FISHING_GROUND_CODE))     return (factorize_fishing_grounds(fishing_ground_colors_for(data)))
 
-  if(fill_by %in% c(FLEET, FLEET_CODE))                       return (factorize_fleets(fleet_colors_for(data)))
+  if(fill_by %in% c(C_FLEET, C_FLEET_CODE))                       return (factorize_fleets(fleet_colors_for(data)))
 
-  if(fill_by %in% c(FISHERY_TYPE, FISHERY_TYPE_CODE))         return (factorize_fishery_types(fishery_type_colors_for(data)))
-  if(fill_by %in% c(FISHERY_GROUP, FISHERY_GROUP_CODE))       return (factorize_fishery_groups(fishery_group_colors_for(data)))
-  if(fill_by %in% c(FISHERY, FISHERY_CODE))                   return (factorize_fisheries(fishery_colors_for(data)))
-  if(fill_by %in% c(GEAR, GEAR_CODE))                         return (factorize_gears(gear_colors_for(data)))
+  if(fill_by %in% c(C_FISHERY_TYPE, C_FISHERY_TYPE_CODE))         return (factorize_fishery_types(fishery_type_colors_for(data)))
+  if(fill_by %in% c(C_FISHERY_GROUP, C_FISHERY_GROUP_CODE))       return (factorize_fishery_groups(fishery_group_colors_for(data)))
+  if(fill_by %in% c(C_FISHERY, C_FISHERY_CODE))                   return (factorize_fisheries(fishery_colors_for(data)))
+  if(fill_by %in% c(C_GEAR, C_GEAR_CODE))                         return (factorize_gears(gear_colors_for(data)))
 
-  if(fill_by %in% c(IUCN_STATUS, IUCN_STATUS_CODE))           return (factorize_IUCN_status(IUCN_colors_for(data)))
-  if(fill_by %in% c(SPECIES_WP, SPECIES_WP_CODE))             return (factorize_species_wps(species_wp_colors_for(data)))
-  if(fill_by %in% c(SPECIES_GROUP, SPECIES_GROUP_CODE))       return (factorize_species_groups(species_group_colors_for(data)))
-  if(fill_by %in% c(SPECIES_CATEGORY, SPECIES_CATEGORY_CODE)) return (factorize_species_categories(species_category_colors_for(data)))
-  if(fill_by %in% c(SPECIES, SPECIES_CODE))                   return (factorize_species(species_colors_for(data)))
+  if(fill_by %in% c(C_IUCN_STATUS, C_IUCN_STATUS_CODE))           return (factorize_IUCN_status(IUCN_colors_for(data)))
+  if(fill_by %in% c(C_SPECIES_WP, C_SPECIES_WP_CODE))             return (factorize_species_wps(species_wp_colors_for(data)))
+  if(fill_by %in% c(C_SPECIES_GROUP, C_SPECIES_GROUP_CODE))       return (factorize_species_groups(species_group_colors_for(data)))
+  if(fill_by %in% c(C_SPECIES_CATEGORY, C_SPECIES_CATEGORY_CODE)) return (factorize_species_categories(species_category_colors_for(data)))
+  if(fill_by %in% c(C_SPECIES, C_SPECIES_CODE))                   return (factorize_species(species_colors_for(data)))
 
-  if(fill_by %in% c(QUALITY, QUALITY_CODE))                   return (factorize_qualities(quality_colors_for(data)))
-  if(fill_by %in% c(FATE_TYPE, FATE_TYPE_CODE))               return (factorize_fate_types(fate_type_colors_for(data)))
-  if(fill_by %in% c(FATE, FATE_CODE))                         return (factorize_fates(fate_colors_for(data)))
-  if(fill_by %in% c(CONDITION_TYPE, CONDITION_TYPE_CODE))     return (factorize_condition_types(condition_type_colors_for(data)))
-  if(fill_by %in% c(CONDITION, CONDITION_CODE))               return (factorize_conditions(condition_colors_for(data)))
-  if(fill_by %in% c(RAISING, RAISE_CODE))                     return (factorize_raisings(raising_colors_for(data)))
+  if(fill_by %in% c(C_QUALITY, C_QUALITY_CODE))                   return (factorize_qualities(quality_colors_for(data)))
+  if(fill_by %in% c(C_FATE_TYPE, C_FATE_TYPE_CODE))               return (factorize_fate_types(fate_type_colors_for(data)))
+  if(fill_by %in% c(C_FATE, C_FATE_CODE))                         return (factorize_fates(fate_colors_for(data)))
+  if(fill_by %in% c(C_CONDITION_TYPE, C_CONDITION_TYPE_CODE))     return (factorize_condition_types(condition_type_colors_for(data)))
+  if(fill_by %in% c(C_CONDITION, C_CONDITION_CODE))               return (factorize_conditions(condition_colors_for(data)))
+  if(fill_by %in% c(C_RAISING, C_RAISE_CODE))                     return (factorize_raisings(raising_colors_for(data)))
 
   #Forcing 'data' to be a data.table as sometimes damn' R runtime turns this into a data.frame
   #causing issues in subsequent attempts at manipulating (read / write) the object
@@ -159,7 +159,7 @@ spatially_disaggregate_geo = function(data, standard_grid) {
   data = merge(x = data,
                y = grid_mappings,
                all.x = TRUE,
-               by.x = "FISHING_GROUND_CODE",
+               by.x = C_FISHING_GROUND_CODE,
                by.y = "SOURCE_FISHING_GROUND_CODE",
                allow.cartesian = TRUE)
 
@@ -167,7 +167,7 @@ spatially_disaggregate_geo = function(data, standard_grid) {
 
   data = data[!is.na(TARGET_FISHING_GROUND_CODE)][, .(VALUE = sum(VALUE * PROPORTION)), keyby = .(FILL_BY, TARGET_FISHING_GROUND_CODE)]
 
-  names(data)[names(data) == "TARGET_FISHING_GROUND_CODE"] = "FISHING_GROUND_CODE"
+  names(data)[names(data) == "TARGET_FISHING_GROUND_CODE"] = C_FISHING_GROUND_CODE
 
   value_after     = sum(data$VALUE)
   value_diff      = value_after - value_before

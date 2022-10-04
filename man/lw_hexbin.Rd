@@ -6,7 +6,7 @@
 \usage{
 lw_hexbin(
   data,
-  facet_by = SPECIES_CODE,
+  facet_by = C_SPECIES_CODE,
   swap_axis = FALSE,
   bins = 75,
   num_breaks = 5,
@@ -16,7 +16,7 @@ lw_hexbin(
 \arguments{
 \item{data}{The source data that shall contain a \code{LENGTH} and a \code{WEIGHT} column}
 
-\item{facet_by}{The data column to use to produce a faceted plot. Defaults to \code{SPECIES_CODE}}
+\item{facet_by}{The data column to use to produce a faceted plot. Defaults to \code{C_SPECIES_CODE}}
 
 \item{swap_axis}{If \code{TRUE} weights will be mapped to the X-axis and lengths to the Y-axis}
 
@@ -31,5 +31,5 @@ Hexbin plot of length / value pairs
 }
 \examples{
 lw_hexbin(ros.LW(species_codes = "BET"))
-lw_hexbin(ros.LW(species_codes = "BET"), facet_by = FLEET_CODE)
+lw_hexbin(ros.LW(species_codes = "BET"), facet_by = C_FLEET_CODE)
 }

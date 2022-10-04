@@ -1,7 +1,7 @@
 #'Implementation of georeferenced, gridded heatmaps with ggplot2.
-#'@param data The data (shall contain a \code{FISHING_GROUND_CODE} column)
+#'@param data The data (shall contain a \code{C_FISHING_GROUND_CODE} column)
 #'@param value The name of the column (in \code{data}) that contains the value to plot
-#'@param yearly_average If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{YEAR} column)
+#'@param yearly_average If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)
 #'@param num_intervals The number of intervals ('breaks') to split the range of values into. The result will be calculated as the quantiles with probabilities increasing by \code{with n * 1 / num_intervals} at each step.
 #'@param unit The value unit (for display purposes)
 #'@param breaks Externally provided breaks. Alternative to \code{num_intervals}
@@ -31,7 +31,7 @@ geo_grid_heatmap = function(data,
                             legend_title = NULL) {
   fail_if_empty(data)
 
-  if(yearly_average & !("YEAR" %in% colnames(data))) {
+  if(yearly_average & !(C_YEAR %in% colnames(data))) {
     stop("Cannot calculate yearly average as the data does not include a 'YEAR' column")
   }
 

@@ -7,7 +7,7 @@
 line.value(
   data,
   value,
-  time = YEAR,
+  time = C_YEAR,
   color_by,
   max_categories = NA,
   colors = NA,

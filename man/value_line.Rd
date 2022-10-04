@@ -8,7 +8,7 @@ and a factor (e.g. species, species group, fleet etc.) that's also used to color
 value_line(
   data,
   value,
-  time = YEAR,
+  time = C_YEAR,
   color_by,
   max_categories = NA,
   colors = NA,
@@ -22,7 +22,7 @@ value_line(
 )
 }
 \arguments{
-\item{data}{A data frame containing values by \code{YEAR} and a given factor}
+\item{data}{A data frame containing values by \code{C_YEAR} and a given factor}
 
 \item{value}{The name of the column holding the actual values}
 

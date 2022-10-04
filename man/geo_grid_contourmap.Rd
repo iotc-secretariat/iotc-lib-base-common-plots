@@ -25,7 +25,7 @@ geo_grid_contourmap(
 )
 }
 \arguments{
-\item{data}{The data (shall contain a \code{FISHING_GROUND_CODE} column)}
+\item{data}{The data (shall contain a \code{C_FISHING_GROUND_CODE} column)}
 
 \item{value}{The name of the column (in \code{data}) that contains the value identifying the number of observations in the grid}
 
@@ -66,7 +66,7 @@ The \code{ggplot2} object representing the plot
 Implementation of a contour plot based on a set of given georeferenced observations aggregated over regular grids.
 }
 \examples{
-geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT)
-geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), FLEET_CODE, uniform_fill = TRUE)
-geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), FLEET_CODE, contour_var = "count",  uniform_fill = TRUE)
+geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT)
+geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, uniform_fill = TRUE)
+geo_grid_contourmap(ros.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, contour_var = "count",  uniform_fill = TRUE)
 }

@@ -5,7 +5,7 @@
 #'@return the summary chart of annual catch trends according to the provided inputs
 #'@export
 catch_last_trends_bar = function(data,
-                                 categorize_by = "FISHERY_GROUP",
+                                 categorize_by = C_FISHERY_GROUP,
                                  colors = factorize_fishery_groups(fishery_group_colors_for(data))) {
   OTHERS = "Other"
 
@@ -83,7 +83,7 @@ catch_last_trends_bar = function(data,
 #'@param outline the outline color to be used for all of the categories identified in the input data
 #'@param fill the fill color to be used for all of the categories identified in the input data
 #'@export
-catch_last_trends_bar_for = function(data, categorize_by = "FLEET", outline = "darkgrey", fill = "darkgrey", max_categories = 4) {
+catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline = "darkgrey", fill = "darkgrey", max_categories = 4) {
   ALL_OTHERS = "All others"
 
   colnames(data)[which(colnames(data) == categorize_by)] = "CATEGORY"

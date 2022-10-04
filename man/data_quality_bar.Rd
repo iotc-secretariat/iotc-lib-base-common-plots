@@ -14,11 +14,11 @@ data_quality_bar(
 )
 }
 \arguments{
-\item{data}{A data frame containing data quality records  by \code{YEAR}, \code{FLEET_CODE}, \code{FISHERY_CODE} and \code{SPECIES_CODE}}
+\item{data}{A data frame containing data quality records  by \code{C_YEAR}, \code{C_FLEET_CODE}, \code{C_FISHERY_CODE} and \code{C_SPECIES_CODE}}
 
 \item{data_set}{One of the data sets for which data quality should be plot (one among \code{NC}, \code{CE} and \code{SF})}
 
-\item{fishery_type}{Optional filter on the \code{FISHERY_TYPE_CODE} column (one among \code{ART} and \code{IND})}
+\item{fishery_type}{Optional filter on the \code{C_FISHERY_TYPE_CODE} column (one among \code{ART} and \code{IND})}
 
 \item{catch_max}{Optional, to set the maximum value (in 1,000 x MT) for the catch Y-axis. Useful when plotting data quality for different components (all, artisanal, industrial)
 of the same data set}

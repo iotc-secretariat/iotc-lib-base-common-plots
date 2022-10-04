@@ -1,6 +1,6 @@
-#'Plots generic 'values' by a time-variable (generally \code{YEAR}) as stacked bars. The original data should be grouped by year
+#'Plots generic 'values' by a time-variable (generally \code{C_YEAR}) as stacked bars. The original data should be grouped by year
 #'and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar
-#'@param data A data frame containing values by \code{YEAR} and a given factor
+#'@param data A data frame containing values by \code{C_YEAR} and a given factor
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param fill_by The name of the column to be used to colorize the bar components
@@ -16,7 +16,7 @@
 #'@export
 value_bar = function(data,
                      value,
-                     time = YEAR,
+                     time = C_YEAR,
                      fill_by,
                      max_categories = NA,
                      colors = NA,
@@ -52,7 +52,7 @@ value_bar = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
 
   xCur = xMax
 
@@ -108,9 +108,9 @@ value_bar = function(data,
   return (p)
 }
 
-#'Plots relative generic 'values' by a time-variable (generally \code{YEAR}) as stacked bars. The original data should be grouped by year
+#'Plots relative generic 'values' by a time-variable (generally \code{C_YEAR}) as stacked bars. The original data should be grouped by year
 #'and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar
-#'@param data A data frame containing values by \code{YEAR} and a given factor
+#'@param data A data frame containing values by \code{C_YEAR} and a given factor
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param fill_by The name of the column to be used to colorize the bar components
@@ -125,7 +125,7 @@ value_bar = function(data,
 #'@export
 value_bar_rel = function(data,
                          value,
-                         time = YEAR,
+                         time = C_YEAR,
                          fill_by,
                          max_categories = NA,
                          colors = NA,
@@ -160,7 +160,7 @@ value_bar_rel = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
 
   xCur = xMax
 

@@ -22,7 +22,7 @@ geo_contourmap(
 )
 }
 \arguments{
-\item{data}{The data (shall contain a \code{FISHING_GROUND_CODE} column)}
+\item{data}{The data (shall contain a \code{C_FISHING_GROUND_CODE} column)}
 
 \item{categorize_by}{The name of the column (in \code{data} that contains the categories)}
 
@@ -57,7 +57,7 @@ The \code{ggplot2} object representing the plot
 Implementation of a contour plot based on a set of given georeferenced observations.
 }
 \examples{
-geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT)
-geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT, uniform_fill = TRUE)
-geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), FLEET_CODE, START_LON, START_LAT, contour_var = "count",  uniform_fill = TRUE)
+geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT)
+geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT, uniform_fill = TRUE)
+geo_contourmap(ros.raw.SETS(fishery_group_codes = "LL"), C_FLEET_CODE, C_START_LON, C_START_LAT, contour_var = "count",  uniform_fill = TRUE)
 }

@@ -3,7 +3,7 @@
 \name{catch_pareto}
 \alias{catch_pareto}
 \title{Pareto plot of catches by two factors, one used to determine the categories on the X axis and another to determine the
-sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).}
+sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).}
 \usage{
 catch_pareto(
   data,
@@ -16,7 +16,7 @@ catch_pareto(
 )
 }
 \arguments{
-\item{data}{A data frame containing nominal catches by \code{YEAR} and at least two given factors (category / fill)}
+\item{data}{A data frame containing nominal catches by \code{C_YEAR} and at least two given factors (category / fill)}
 
 \item{categorize_by}{The name of the column to be used to assign labels to the bars}
 
@@ -35,8 +35,8 @@ the plot corresponding to the given input parameters
 }
 \description{
 Pareto plot of catches by two factors, one used to determine the categories on the X axis and another to determine the
-sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).
+sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).
 }
 \examples{
-catch_pareto(data, 2015, 2019, FLEET, FISHERY_GROUP, max_fill_categories = 9)
+catch_pareto(data, 2015, 2019, C_FLEET, C_FISHERY_GROUP, max_fill_categories = 9)
 }

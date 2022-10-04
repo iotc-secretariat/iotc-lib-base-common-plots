@@ -1,5 +1,5 @@
 #'Implementation of a geospatial plot with ggplot2
-#'@param data The data (shall contain a \code{FISHING_GROUND_CODE} column)
+#'@param data The data (shall contain a \code{C_FISHING_GROUND_CODE} column)
 #'@param categorize_by The name of the column (in \code{data}) that contains the categories
 #'@param longitude The name of the column (in \code{data}) that contains the \code{LONGITUDE} information
 #'@param latitude The name of the column (in \code{data}) that contains the \code{LATITUDE} information
@@ -13,7 +13,7 @@
 #'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
 #'@return The \code{ggplot2} object representing the plot
 #'@export
-#'@examples geo_plot(ros.raw.SETS(years = 2018), FISHERY_GROUP_CODE, START_LON, START_LAT)
+#'@examples geo_plot(ros.raw.SETS(years = 2018), C_FISHERY_GROUP_CODE, C_START_LON, C_START_LAT)
 #'geo_plot(ros.)
 geo_plot = function(data,
                     categorize_by,

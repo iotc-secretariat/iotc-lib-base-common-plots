@@ -3,9 +3,9 @@ DARK_RED = darken(RED, amount = 0.2)
 
 #'Mixed bar + line plot of data quality by year and data set. Bars are further broken down by quality score (0 = high, 2, 4, 6, 8 = low) and
 #'a line plot is superimposed to show the percentage of catches by year with a "good" quality score (i.e. between 0 and 2).
-#'@param data A data frame containing data quality records  by \code{YEAR}, \code{FLEET_CODE}, \code{FISHERY_CODE} and \code{SPECIES_CODE}
+#'@param data A data frame containing data quality records  by \code{C_YEAR}, \code{C_FLEET_CODE}, \code{C_FISHERY_CODE} and \code{C_SPECIES_CODE}
 #'@param data_set One of the data sets for which data quality should be plot (one among \code{NC}, \code{CE} and \code{SF})
-#'@param fishery_type Optional filter on the \code{FISHERY_TYPE_CODE} column (one among \code{ART} and \code{IND})
+#'@param fishery_type Optional filter on the \code{C_FISHERY_TYPE_CODE} column (one among \code{ART} and \code{IND})
 #'@param catch_max Optional, to set the maximum value (in 1,000 x MT) for the catch Y-axis. Useful when plotting data quality for different components (all, artisanal, industrial)
 #'of the same data set
 #'@param show_percent_good_quality Optional flag to turn ON or OFF the display of the red line showing the percentage of catches reported as having "good" quality. Defaults to \code{TRUE}
@@ -150,7 +150,7 @@ data_quality_line_helper = function(data, data_set) {
 
 #'Multiple line plot of the percentage of "good" quality data (i.e. with a score between 0 and 2) by year and data set. Three lines are plot: one for artisanal fisheries, one for industrial fisheries and one
 #'for all fisheries combined.
-#'@param data A data frame containing data quality records  by \code{YEAR}, \code{FLEET_CODE}, \code{FISHERY_CODE} and \code{SPECIES_CODE}
+#'@param data A data frame containing data quality records  by \code{C_YEAR}, \code{C_FLEET_CODE}, \code{C_FISHERY_CODE} and \code{C_SPECIES_CODE}
 #'@param data_set One of the data sets for which data quality should be plot (one among \code{NC}, \code{CE} and \code{SF})
 #'@return the plot for the strata identified by the given input filters
 #'@examples data_quality_line(data, "CE")

@@ -2,8 +2,8 @@ RED = "red"
 DARK_RED = darken(RED, amount = 0.2)
 
 #'Pareto plot of values by two factors, one used to determine the categories on the X axis and another to determine the
-#'sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).
-#'@param data A data frame containing values by \code{YEAR} and at least two given factors (category / fill)
+#'sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).
+#'@param data A data frame containing values by \code{C_YEAR} and at least two given factors (category / fill)
 #'@param value The name of the column holding the actual values
 #'@param categorize_by The name of the column to be used to assign labels to the bars
 #'@param fill_by The name of the column to be used to colorize the bar components

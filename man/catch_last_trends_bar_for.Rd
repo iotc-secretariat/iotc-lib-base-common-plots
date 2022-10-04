@@ -7,7 +7,7 @@ maximum number of user-provided categories) and uniformly colored with the provi
 \usage{
 catch_last_trends_bar_for(
   data,
-  categorize_by = "FLEET",
+  categorize_by = C_FLEET,
   outline = "darkgrey",
   fill = "darkgrey",
   max_categories = 4

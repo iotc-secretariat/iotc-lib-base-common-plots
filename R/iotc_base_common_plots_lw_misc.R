@@ -1,15 +1,15 @@
 #'Hexbin plot of length / value pairs
 #'@param data The source data that shall contain a \code{LENGTH} and a \code{WEIGHT} column
-#'@param facet_by The data column to use to produce a faceted plot. Defaults to \code{SPECIES_CODE}
+#'@param facet_by The data column to use to produce a faceted plot. Defaults to \code{C_SPECIES_CODE}
 #'@param swap_axis If \code{TRUE} weights will be mapped to the X-axis and lengths to the Y-axis
 #'@param bins The number of bins in both vertical and horizontal directions (see also \code{\link{geom_hex}})
 #'@param num_breaks The number of breaks to use for the scale
 #'@param colors An alternative palette with as many colors as the \code{num_breaks}
 #'@examples lw_hexbin(ros.LW(species_codes = "BET"))
-#'@examples lw_hexbin(ros.LW(species_codes = "BET"), facet_by = FLEET_CODE)
+#'@examples lw_hexbin(ros.LW(species_codes = "BET"), facet_by = C_FLEET_CODE)
 #'@export
 lw_hexbin = function(data,
-                     facet_by = SPECIES_CODE,
+                     facet_by = C_SPECIES_CODE,
                      swap_axis = FALSE,
                      bins = 75,
                      num_breaks = 5,
@@ -55,18 +55,18 @@ lw_hexbin = function(data,
 
 #'X-Y plot of length / value pairs
 #'@param data The source data that shall contain a \code{LENGTH} and a \code{WEIGHT} column
-#'@param categorize_by The data column that contains the categories for each series. Defaults to \code{SPECIES_CODE}
+#'@param categorize_by The data column that contains the categories for each series. Defaults to \code{C_SPECIES_CODE}
 #'@param swap_axis If \code{TRUE} weights will be mapped to the X-axis and lengths to the Y-axis
 #'@param jitter_x \code{TRUE} to add X-axis jittering to the plots
 #'@param jitter_y \code{FALSE} to add Y-axis jittering to the plots
 #'@param colors An alternative palette with as many colors as the \code{num_breaks}
 #'@param alpha The transparency value to use when plotting the points
 #'@examples lw_plot(ros.LW(species_codes = "BET"))
-#'@examples lw_plot(ros.LW(species_codes = "BET"), categorize_by = FLEET_CODE)
-#'@examples lw_plot(ros.LW(species_codes = "BET"), categorize_by = LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16)))
+#'@examples lw_plot(ros.LW(species_codes = "BET"), categorize_by = C_FLEET_CODE)
+#'@examples lw_plot(ros.LW(species_codes = "BET"), categorize_by = C_LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16)))
 #'@export
 lw_plot = function(data,
-                   categorize_by = SPECIES_CODE,
+                   categorize_by = C_SPECIES_CODE,
                    swap_axis = FALSE,
                    jitter_x = TRUE,
                    jitter_y = FALSE,
@@ -117,7 +117,7 @@ lw_plot = function(data,
 #'@param plot The original L-W plot (produced with \code{\link{lw_plot}})
 #'@param show_ci Whether or not display the confidence interval around the computed means (defaults to \code{TRUE})
 #'@param level The level of confidence interval to use (defaults to \code{0.95})
-#'@examples lw_smooth(lw_plot(ros.LW(species_codes = "BET", length_measure_type_codes = c("EF", "FL", "TL", "PC")), categorize_by = LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16))))
+#'@examples lw_smooth(lw_plot(ros.LW(species_codes = "BET", length_measure_type_codes = c("EF", "FL", "TL", "PC")), categorize_by = C_LENGTH_MEASURE_TYPE_CODE, colors = color_table(unique_colors(16))))
 #'@export
 lw_smooth = function(plot, show_ci = TRUE, level = 0.95) {
   return(

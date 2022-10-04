@@ -1,6 +1,6 @@
 #'Plots generic 'values' as a treemap chart. The original data should be grouped by year
 #'and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the bars
-#'@param data A data frame containing values by \code{YEAR} and a given factor
+#'@param data A data frame containing values by \code{C_YEAR} and a given factor
 #'@param value The name of the column holding the actual values
 #'@param fill_by The name of the column to be used to colorize the bar components
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'

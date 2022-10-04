@@ -16,7 +16,7 @@ catch_line_rel(
 )
 }
 \arguments{
-\item{data}{A data frame containing nominal catches by \code{YEAR} and a given factor}
+\item{data}{A data frame containing nominal catches by \code{C_YEAR} and a given factor}
 
 \item{color_by}{The name of the column to be used to colorize the line components}
 
@@ -38,7 +38,7 @@ Plots the relative catches by year as relative line plots The original data shou
 and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar
 }
 \examples{
-catch_bar_expanded(NC_est(), SPECIES_CODE)                   # Expanded bar chart with yearly estimated catches by species code
-catch_bar_expanded(NC_est(), FLEET_CODE, max_categories = 5) # Expanded bar chart with yearly estimated catches by fleet code, limited to the first five fleets in terms of total catches
-catch_bar_expanded(NC_raw_std(years = c(2000:2010), species_group_codes = "TUNAS"), SPECIES_CODE, colors = color_table(unique_colors(16))) # Expanded bar chart with yearly (2000-2010) raw catches by species code (for tuna species) with colors re-assigned
+catch_bar_expanded(NC_est(), C_SPECIES_CODE)                   # Expanded bar chart with yearly estimated catches by species code
+catch_bar_expanded(NC_est(), C_FLEET_CODE, max_categories = 5) # Expanded bar chart with yearly estimated catches by fleet code, limited to the first five fleets in terms of total catches
+catch_bar_expanded(NC_raw_std(years = c(2000:2010), species_group_codes = "TUNAS"), C_SPECIES_CODE, colors = color_table(unique_colors(16))) # Expanded bar chart with yearly (2000-2010) raw catches by species code (for tuna species) with colors re-assigned
 }

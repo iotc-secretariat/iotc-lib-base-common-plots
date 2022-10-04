@@ -1,8 +1,8 @@
 #'Implementation of gridded, georeferenced piemaps with ggplot2 and scatterpie libs.
-#'@param data The data (shall contain a \code{FISHING_GROUND_CODE} column)
+#'@param data The data (shall contain a \code{C_FISHING_GROUND_CODE} column)
 #'@param value The name of the column (in \code{data}) that contains the value to plot
 #'@param fill_by The name of the column (in \code{data} that contains the categories)
-#'@param yearly_average If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{YEAR} column)
+#'@param yearly_average If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)
 #'@param reference_value The reference value for the standard pie. If not specified, it will be assumed to equal the 99\% of all values
 #'@param unit The value unit (for display purposes)
 #'@param colors The colors to assign to each \code{fill_by} category. If not specified, it is determined automatically from \code{fill_by} (as long as this is one of the standard categories for which a color mapping exists)
@@ -43,7 +43,7 @@ geo_grid_piemap = function(data,
                            trim_labels = TRUE) {
   fail_if_empty(data)
 
-  if(yearly_average & !("YEAR" %in% colnames(data))) {
+  if(yearly_average & !(C_YEAR %in% colnames(data))) {
     stop("Cannot calculate yearly average as the data does not include a 'YEAR' column")
   }
 

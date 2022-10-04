@@ -1,6 +1,6 @@
 #'Plots values by year as separate lines. The original data should be grouped by year
 #'and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the bars
-#'@param data A data frame containing values by \code{YEAR} and a given factor
+#'@param data A data frame containing values by \code{C_YEAR} and a given factor
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param color_by The name of the column to be used to colorize the lines
@@ -17,7 +17,7 @@
 #'@export
 value_line = function(data,
                       value,
-                      time = YEAR,
+                      time = C_YEAR,
                       color_by,
                       max_categories = NA,
                       colors = NA,
@@ -54,7 +54,7 @@ value_line = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == YEAR) {
+  if(time == C_YEAR) {
     xCur = as.integer(format(Sys.Date(), "%Y"))
 
     #YEARS = min(data$TIME):max(data$TIME)
@@ -120,9 +120,9 @@ value_line = function(data,
   return (p)
 }
 
-#'Plots relative generic 'values' by a time-variable (generally \code{YEAR}) as relative line plots. The original data should be grouped by year
+#'Plots relative generic 'values' by a time-variable (generally \code{C_YEAR}) as relative line plots. The original data should be grouped by year
 #'and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the components of each bar
-#'@param data A data frame containing values by \code{YEAR} and a given factor
+#'@param data A data frame containing values by \code{C_YEAR} and a given factor
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param color_by The name of the column to be used to colorize the line components
@@ -138,7 +138,7 @@ value_line = function(data,
 #'@export
 value_line_rel = function(data,
                           value,
-                          time = YEAR,
+                          time = C_YEAR,
                           color_by,
                           max_categories = NA,
                           colors = NA,
@@ -174,7 +174,7 @@ value_line_rel = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
 
   xCur = xMax
 

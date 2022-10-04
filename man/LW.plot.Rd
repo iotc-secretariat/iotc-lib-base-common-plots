@@ -6,7 +6,7 @@
 \usage{
 LW.plot(
   data,
-  categorize_by = SPECIES_CODE,
+  categorize_by = C_SPECIES_CODE,
   swap_axis = FALSE,
   jitter_x = TRUE,
   jitter_y = FALSE,

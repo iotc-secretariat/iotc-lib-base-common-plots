@@ -16,7 +16,7 @@ catch_line(
 )
 }
 \arguments{
-\item{data}{A data frame containing nominal catches by \code{YEAR} and a given factor}
+\item{data}{A data frame containing nominal catches by \code{C_YEAR} and a given factor}
 
 \item{color_by}{The name of the column to be used to colorize the lines}
 
@@ -38,6 +38,6 @@ Plots nominal catches by year as separate lines. The original data should be gro
 and a factor (e.g. species, species group, fleet etc.) that's also used to colorize the bars
 }
 \examples{
-catch_line(NC_est(species_group_codes = "TUNAS"), SPECIES_CODE)
-catch_line(NC_est(species_group_codes = "TUNAS"), SPECIES_CODE, colors = color_table(unique_colors(32)))
+catch_line(NC_est(species_group_codes = "TUNAS"), C_SPECIES_CODE)
+catch_line(NC_est(species_group_codes = "TUNAS"), C_SPECIES_CODE, colors = color_table(unique_colors(32)))
 }

@@ -20,7 +20,7 @@ geo_plot(
 )
 }
 \arguments{
-\item{data}{The data (shall contain a \code{FISHING_GROUND_CODE} column)}
+\item{data}{The data (shall contain a \code{C_FISHING_GROUND_CODE} column)}
 
 \item{categorize_by}{The name of the column (in \code{data}) that contains the categories}
 
@@ -51,6 +51,6 @@ The \code{ggplot2} object representing the plot
 Implementation of a geospatial plot with ggplot2
 }
 \examples{
-geo_plot(ros.raw.SETS(years = 2018), FISHERY_GROUP_CODE, START_LON, START_LAT)
+geo_plot(ros.raw.SETS(years = 2018), C_FISHERY_GROUP_CODE, C_START_LON, C_START_LAT)
 geo_plot(ros.)
 }

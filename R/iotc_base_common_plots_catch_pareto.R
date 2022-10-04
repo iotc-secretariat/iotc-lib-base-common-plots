@@ -1,6 +1,6 @@
 #'Pareto plot of catches by two factors, one used to determine the categories on the X axis and another to determine the
-#'sub-categories for each X category (typically FLEET_CODE and FISHERY_CODE).
-#'@param data A data frame containing nominal catches by \code{YEAR} and at least two given factors (category / fill)
+#'sub-categories for each X category (typically C_FLEET_CODE and C_FISHERY_CODE).
+#'@param data A data frame containing nominal catches by \code{C_YEAR} and at least two given factors (category / fill)
 #'@param categorize_by The name of the column to be used to assign labels to the bars
 #'@param fill_by The name of the column to be used to colorize the bar components
 #'@param max_categories The maximum number of categories to display on the X axis (an "All other" category will be added at the end if required)
@@ -8,7 +8,7 @@
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
 #'@return the plot corresponding to the given input parameters
-#'@examples catch_pareto(data, 2015, 2019, FLEET, FISHERY_GROUP, max_fill_categories = 9)
+#'@examples catch_pareto(data, 2015, 2019, C_FLEET, C_FISHERY_GROUP, max_fill_categories = 9)
 #'@export
 catch_pareto = function(data,
                         categorize_by,
@@ -20,7 +20,7 @@ catch_pareto = function(data,
   return(
     value_pareto(
       data,
-      CATCH,
+      C_CATCH,
       categorize_by,
       fill_by,
       max_categories,

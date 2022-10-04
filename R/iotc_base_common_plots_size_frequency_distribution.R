@@ -9,7 +9,7 @@
 #'@return the plot
 #'@export
 size_distribution <- function(data,
-                              categorize_by = FISHERY_CODE,
+                              categorize_by = C_FISHERY_CODE,
                               measure_type = "Fork length",
                               measure_unit = "cm",
                               draw_line = FALSE,
