@@ -65,7 +65,7 @@ geo_grid_piemap = function(data,
     data = data[, VALUE := VALUE / years]
   }
 
-  data = data[, .(VALUE = sum(VALUE)), keyby = .(FILL_BY,  FISHING_GROUND_CODE)]
+  data = data[, .(VALUE = sum(VALUE)), keyby = .(FILL_BY, FISHING_GROUND_CODE)]
 
   if(!is.na(max_categories)) {
     reduced = shrink_categories_geo(data, colors, max_categories, user_defined_colors)
