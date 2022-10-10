@@ -54,23 +54,28 @@ value_line = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == C_YEAR) {
-    xCur = as.integer(format(Sys.Date(), "%Y"))
+  #f(time == C_YEAR) {
+    #xCur = as.integer(format(Sys.Date(), "%Y"))
 
-    #YEARS = min(data$TIME):max(data$TIME)
-    #CATEGORIES = unique(data$FILL_BY)
+    ##YEARS = min(data$TIME):max(data$TIME)
+    ##CATEGORIES = unique(data$FILL_BY)
 
-    #TIME_X_CATEGORIES = expand.grid(TIME = YEARS, FILL_BY = CATEGORIES)
+    ##TIME_X_CATEGORIES = expand.grid(TIME = YEARS, FILL_BY = CATEGORIES)
 
-    #data = merge(data, TIME_X_CATEGORIES, by = c("TIME", "FILL_BY"), all.y = TRUE)
-  }
+    ##data = merge(data, TIME_X_CATEGORIES, by = c("TIME", "FILL_BY"), all.y = TRUE)
+  #}
 
-  xCur = xMax
+  #xCur = xMax
 
   dMin = floor(xMin / x_breaks_every) * x_breaks_every
   dMax = floor(xMax / x_breaks_every) * x_breaks_every
 
-  breaks = unique(c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur))
+  x_breaks = c(xMin, seq(dMin, dMax, x_breaks_every))
+
+  if(x_breaks_every == 1 | ( xMax - dMax ) > 1)
+    x_breaks = append(x_breaks, xMax)
+
+  x_breaks = unique(x_breaks)
 
   yData = data[, .(VALUE = sum(VALUE)), keyby = .(TIME)]
 
@@ -107,7 +112,7 @@ value_line = function(data,
   p = p +
     scale_colour_manual(values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
 
-    scale_x_continuous(expand = c(0, 0), breaks = breaks) +
+    scale_x_continuous(expand = c(0, 0), breaks = x_breaks) +
     scale_y_continuous(expand = c(0, 0),
                        breaks = breaks_for(yMin, yMax),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },
@@ -174,14 +179,19 @@ value_line_rel = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  #if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
 
-  xCur = xMax
+  #xCur = xMax
 
   dMin = floor(xMin / x_breaks_every) * x_breaks_every
   dMax = floor(xMax / x_breaks_every) * x_breaks_every
 
-  breaks = c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur)
+  x_breaks = c(xMin, seq(dMin, dMax, x_breaks_every))
+
+  if(x_breaks_every == 1 | ( xMax - dMax ) > 1)
+    x_breaks = append(x_breaks, xMax)
+
+  x_breaks = unique(x_breaks)
 
   yMin = 0
   yMax = 100
@@ -216,7 +226,7 @@ value_line_rel = function(data,
   p = p +
     scale_colour_manual(values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
 
-    scale_x_continuous(expand = c(0, 0), breaks = breaks) +
+    scale_x_continuous(expand = c(0, 0), breaks = x_breaks) +
     scale_y_continuous(expand = c(0, 0),
                        breaks = seq(0, 100, 10),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },

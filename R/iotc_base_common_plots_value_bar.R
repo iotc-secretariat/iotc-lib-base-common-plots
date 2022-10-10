@@ -52,14 +52,18 @@ value_bar = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
-
-  xCur = xMax
+  #if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  #xCur = xMax
 
   dMin = floor(xMin / x_breaks_every) * x_breaks_every
   dMax = floor(xMax / x_breaks_every) * x_breaks_every
 
-  breaks = unique(c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur))
+  x_breaks = c(xMin, seq(dMin, dMax, x_breaks_every))
+
+  if(x_breaks_every == 1 | ( xMax - dMax ) > 1)
+    x_breaks = append(x_breaks, xMax)
+
+  x_breaks = unique(x_breaks)
 
   yData = data[, .(VALUE = sum(VALUE)), keyby = .(TIME)]
 
@@ -77,8 +81,6 @@ value_bar = function(data,
     num_legend_rows = calculate_legend_rows(number_categories)
   }
 
-  breaks = c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur)
-
   p =
     initialize_plot(data, aesthetics = aes(x = TIME,
                                            y = VALUE,
@@ -93,7 +95,7 @@ value_bar = function(data,
     scale_fill_manual  (values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
     scale_colour_manual(values = colors$OUTLINE, guide = guide_none())
 
-  p = p + scale_x_continuous(expand = c(0, 0), breaks = breaks)
+  p = p + scale_x_continuous(expand = c(0, 0), breaks = x_breaks)
 
   p = p +
     scale_y_continuous(expand = c(0, 0),
@@ -160,14 +162,16 @@ value_bar_rel = function(data,
   xMin = min(data$TIME)
   xMax = max(data$TIME)
 
-  if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
-
-  xCur = xMax
+  #if(time == C_YEAR) xCur = as.integer(format(Sys.Date(), "%Y"))
+  #xCur = xMax
 
   dMin = floor(xMin / x_breaks_every) * x_breaks_every
   dMax = floor(xMax / x_breaks_every) * x_breaks_every
 
-  breaks = c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur)
+  x_breaks = c(xMin, seq(dMin, dMax, x_breaks_every))
+
+  if(x_breaks_every == 1 | ( xMax - dMax ) > 1)
+    x_breaks = append(x_breaks, xMax)
 
   yMin = 0
   yMax = 100
@@ -183,8 +187,6 @@ value_bar_rel = function(data,
     num_legend_rows = calculate_legend_rows(number_categories)
   }
 
-  breaks = c(xMin, seq(dMin, dMax, x_breaks_every), xMax, xCur)
-
   p =
     initialize_plot(data, aesthetics = aes(x = TIME,
                                            y = VALUE_PERC,
@@ -199,7 +201,7 @@ value_bar_rel = function(data,
     scale_fill_manual  (values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
     scale_colour_manual(values = colors$OUTLINE, guide = guide_none())
 
-  p = p + scale_x_continuous(expand = c(0, 0), breaks = breaks)
+  p = p + scale_x_continuous(expand = c(0, 0), breaks = x_breaks)
 
   p = p +
     scale_y_continuous(expand = c(0, 0),

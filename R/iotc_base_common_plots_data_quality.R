@@ -26,7 +26,7 @@ data_quality_bar = function(data,
 
   yMin = min(data$YEAR)
   yMax = max(data$YEAR)
-  yCur = as.integer(format(Sys.Date(), "%Y"))
+  #yCur = as.integer(format(Sys.Date(), "%Y"))
 
   data_quality = data[, .(CATCH    = sum(CATCH, na.rm=T) / 1000,
                           CATCH_CE = sum(CATCH_CE, na.rm=T) / 1000,
@@ -98,9 +98,13 @@ data_quality_bar = function(data,
                  colour = RED)
   }
 
+  x_breaks = c(seq(yMin, yMax, 10)) # was: c(seq(yMin, yMax, 10), min(yMax, yCur))
+
+  if(yMax - max(x_breaks) > 1) x_breaks = append(x_breaks, yMax)
+
   p = p +
     scale_x_continuous(expand = c(0, 0),
-                       breaks = c(seq(yMin, yMax, 10), min(yMax, yCur))) +
+                       breaks = x_breaks) +
     scale_y_continuous(expand = c(0, 0),
                        breaks = breaks_for(cMin, cMax),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) })
@@ -130,7 +134,7 @@ data_quality_line_helper = function(data, data_set) {
 
   yMin = min(data$YEAR)
   yMax = max(data$YEAR)
-  yCur = as.integer(format(Sys.Date(), "%Y"))
+  #yCur = as.integer(format(Sys.Date(), "%Y"))
 
   data_quality = data[, .(CATCH    = sum(CATCH, na.rm=T) / 1000,
                           CATCH_CE = sum(CATCH_CE, na.rm=T) / 1000,
@@ -165,7 +169,10 @@ data_quality_line = function(data, data_set = "NC") {
 
   yMin = min(data_all$YEAR)
   yMax = max(data_all$YEAR)
-  yCur = as.integer(format(Sys.Date(), "%Y"))
+
+  x_breaks = c(seq(yMin, yMax, 10)) # was: c(seq(yMin, yMax, 10), min(yMax, yCur))
+
+  if(yMax - max(x_breaks) > 1) x_breaks = append(x_breaks, yMax)
 
   color_art = fill_for_fishery_type("ART")
   color_ind = fill_for_fishery_type("IND")
@@ -210,7 +217,7 @@ data_quality_line = function(data, data_set = "NC") {
     scale_color_manual(values = c("ALL" = "black", "ART" = color_art, "IND" = color_ind),
                        labels = c("All fisheries", "Artisanal fisheries", "Industrial fisheries")) +
     scale_x_continuous(expand = c(0, 0),
-                       breaks = c(seq(yMin, yMax, 10), min(yMax, yCur))) +
+                       breaks = x_breaks) +
     scale_y_continuous(expand = c(0, 0),
                        breaks = seq(0, 100, 10),
                        labels = function(x) { format(x, scientific = FALSE) },
