@@ -103,8 +103,8 @@ geo_grid_heatmap = function(data,
                 fill = FILL,
                 color = FILL)
             ) +
-            scale_color_manual(values = outline) +
-            scale_fill_manual( values = fill)
+            scale_color_manual(values = outline, drop = FALSE) +
+            scale_fill_manual( values = fill, drop = FALSE)
         })
       })
 
