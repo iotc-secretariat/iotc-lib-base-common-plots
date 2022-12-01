@@ -29,7 +29,7 @@ value_pie = function(data,
   colnames(data)[which(colnames(data) == fill_by)] = "FILL_BY"
   colnames(colors)[which(colnames(colors) == fill_by)] = "FILL_BY"
 
-  data = data[, .(VALUE = sum(VALUE)), keyby = .(YEAR, FILL_BY)]
+  data = data[, .(VALUE = sum(VALUE)), keyby = .(FILL_BY)]
 
   if(!is.na(max_categories)) {
     reduced = shrink_categories_value(data, colors, max_categories, customized_colors)
@@ -38,14 +38,16 @@ value_pie = function(data,
     colors = reduced$colors
   }
 
+  number_categories = length(unique(data$FILL_BY))
+
   categories = as.character(sort(unique(data$FILL_BY)))
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
   else labels = categories
 
-  colors = head(reduced$colors, length(unique(data$FILL_BY)))
-
-  colors$FILL_BY = categories
+  if(is.na(num_legend_rows)) {
+    num_legend_rows = calculate_legend_rows(number_categories)
+  }
 
   totals = sum(data$VALUE)
 
