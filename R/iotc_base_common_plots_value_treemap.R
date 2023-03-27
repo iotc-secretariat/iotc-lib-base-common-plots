@@ -6,8 +6,10 @@
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
+#'@param show_labels \code{TRUE} to display the corresponding label within each area
 #'@param show_percentages \code{TRUE} to display percentages of each area over the total
 #'@param trim_labels If \code{TRUE} trims all category labels to a maximum of 24 characters
+#'@param radius the radius (in points) of the rounded corners, or \code{0} if corners shall be kept straight
 #'@return the plot corresponding to the given input parameters
 #'@export
 value_treemap = function(data,
@@ -16,9 +18,14 @@ value_treemap = function(data,
                          max_categories = NA,
                          colors = NA,
                          num_legend_rows = 2,
+                         show_labels = TRUE,
                          show_percentages = TRUE,
-                         trim_labels = TRUE) {
+                         trim_labels = TRUE,
+                         radius = 0) {
   fail_if_empty(data)
+
+  if(show_labels == FALSE && show_percentages == FALSE)
+    stop("At least one among the label and the percentage should be displayed")
 
   customized_colors = is_available(colors)
 
@@ -51,10 +58,15 @@ value_treemap = function(data,
 
   p_data = data[, .(VALUE = sum(VALUE), VALUE_PERC = sum(VALUE) / totals), keyby = .(FILL_BY)]
 
-  p_data$LABEL = p_data$FILL_BY
+  p_data$LABEL = NA
 
-  if(show_percentages)
+  if(show_labels)
+    p_data$LABEL = as.character(p_data$FILL_BY)
+
+  if(show_percentages && show_labels)
     p_data$LABEL = paste(p_data$LABEL, paste0("(", round(p_data$VALUE_PERC * 100, 1), "%", ")"))
+  else # necessarily: show_percentage == FALSE && show_labels == TRUE
+    p_data$LABEL = paste0(round(p_data$VALUE_PERC * 100, 1), "%")
 
   treemap =
     initialize_plot(p_data, custom_theme = theme_void, aesthetics = aes(area = VALUE_PERC, label = LABEL)) +
@@ -67,7 +79,7 @@ value_treemap = function(data,
 
   treemap = treemap +
     geom_treemap(aes(fill = FILL_BY, color = FILL_BY),
-                 radius = unit(5, "pt"),
+                 radius = unit(radius, "pt"),
                  start = "topleft") +
 
     #We explicityl provide name = "" otherwise it will print "FILL_BY" on the legend...
@@ -75,7 +87,7 @@ value_treemap = function(data,
     scale_colour_manual(values = colors$OUTLINE, guide = guide_none())
 
 
-  if(show_percentages) {
+  if(show_percentages || show_labels) {
     new_colors = sapply(colors$FILL, function(c) { ifelse(is_dark(c), lighten(c, amount = 0.4), darken(c, amount = 0.4)) })
     names(new_colors) = NULL
 

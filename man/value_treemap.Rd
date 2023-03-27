@@ -12,8 +12,10 @@ value_treemap(
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
+  show_labels = TRUE,
   show_percentages = TRUE,
-  trim_labels = TRUE
+  trim_labels = TRUE,
+  radius = 0
 )
 }
 \arguments{
@@ -29,9 +31,13 @@ value_treemap(
 
 \item{num_legend_rows}{The number of rows to display in the legend}
 
+\item{show_labels}{\code{TRUE} to display the corresponding label within each area}
+
 \item{show_percentages}{\code{TRUE} to display percentages of each area over the total}
 
 \item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
+
+\item{radius}{the radius (in points) of the rounded corners, or \code{0} if corners shall be kept straight}
 }
 \value{
 the plot corresponding to the given input parameters

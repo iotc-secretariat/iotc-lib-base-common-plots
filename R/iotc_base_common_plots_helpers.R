@@ -137,7 +137,7 @@ shrink_categories_value = function(data, colors, max_fill_categories, custom_col
       data,
       function(data) {
         if("TIME" %in% colnames(data)) data = data[, .(VALUE = sum(VALUE)), keyby = .(TIME, FILL_BY)]
-        else if(YEAR %in% colnames(data)) data = data[, .(VALUE = sum(VALUE)), keyby = .(YEAR, FILL_BY)]
+        else if(C_YEAR %in% colnames(data)) data = data[, .(VALUE = sum(VALUE)), keyby = .(YEAR, FILL_BY)]
       },
       colors,
       colors_are_custom = custom_colors,

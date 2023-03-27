@@ -10,8 +10,10 @@ treemap.catch(
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
+  show_labels = TRUE,
   show_percentages = TRUE,
-  trim_labels = TRUE
+  trim_labels = TRUE,
+  radius = 0
 )
 }
 \description{
