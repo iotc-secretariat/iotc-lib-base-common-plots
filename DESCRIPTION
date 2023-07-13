@@ -1,7 +1,7 @@
 Package: iotc.base.common.plots
 Type: Package
 Title: IOTC base functions for common data plotting and visualization
-Version: 0.2.1
+Version: 0.2.2
 Author: Fabio Fiorellato <fabio.fiorellato@fao.org>
 Maintainer: Fabio Fiorellato <fabio.fiorellato@fao.org>
 Description: Provides convenience methods to ensure standardized plots for all IOTC working party-related charts, including:
@@ -24,4 +24,4 @@ Depends:
   iotc.core.gis.cwp (>= 0.2.1),
   iotc.core.gis.maps (>= 0.2.1),
   iotc.core.utils.aes (>= 0.2.1),
-  iotc.base.common.data (>= 0.2.1)
+  iotc.base.common.data (>= 0.2.2)

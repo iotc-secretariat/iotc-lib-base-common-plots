@@ -22,7 +22,7 @@ factorize_colors = function(data, fill_by = C_SPECIES_CODE) {
   if(fill_by %in% c(C_SPECIES_WP, C_SPECIES_WP_CODE))             return (factorize_species_wps(species_wp_colors_for(data)))
   if(fill_by %in% c(C_SPECIES_GROUP, C_SPECIES_GROUP_CODE))       return (factorize_species_groups(species_group_colors_for(data)))
   if(fill_by %in% c(C_SPECIES_CATEGORY, C_SPECIES_CATEGORY_CODE)) return (factorize_species_categories(species_category_colors_for(data)))
-  if(fill_by %in% c(C_SPECIES, C_SPECIES_CODE))                   return (factorize_species(species_colors_for(data)))
+  if(fill_by %in% c(C_SPECIES, C_SPECIES_CODE))                   return (factorize_species(species_colors_for(data), collapse_secondary_species = TRUE))
 
   if(fill_by %in% c(C_QUALITY, C_QUALITY_CODE))                   return (factorize_qualities(quality_colors_for(data)))
   if(fill_by %in% c(C_FATE_TYPE, C_FATE_TYPE_CODE))               return (factorize_fate_types(fate_type_colors_for(data)))
