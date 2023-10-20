@@ -80,10 +80,10 @@ catch_last_trends_bar = function(data,
 #'maximum number of user-provided categories) and uniformly colored with the provided outline and fill colors
 #'@param data the input dataset
 #'@param categorize_by the data field to be used to categorize the annual catches
-#'@param outline the outline color to be used for all of the categories identified in the input data
-#'@param fill the fill color to be used for all of the categories identified in the input data
+#'@param outline_color the outline color to be used for all of the categories identified in the input data
+#'@param fill_color the fill color to be used for all of the categories identified in the input data
 #'@export
-catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline = "darkgrey", fill = "darkgrey", max_categories = 4) {
+catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline_color = "darkgrey", fill_color = "darkgrey", max_categories = 4) {
   ALL_OTHERS = "All others"
 
   colnames(data)[which(colnames(data) == categorize_by)] = "CATEGORY"
@@ -127,8 +127,8 @@ catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline = "d
   cMax = max(dataYC$CATCH) / 1000
 
   p =
-    initialize_plot(dataYC, aesthetics = aes(fill  = fill,
-                                             col   = outline,
+    initialize_plot(dataYC, aesthetics = aes(fill  = fill_color,
+                                             col   = outline_color,
                                              x     = reorder(CATEGORY, -ORDERED_CATCH),
                                              y     = CATCH / 1000,
                                              alpha = YEAR)) +
@@ -147,11 +147,11 @@ catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline = "d
 
     geom_col(na.rm = FALSE, position =  position_dodge(preserve = "single")) +
 
-    guides(alpha = guide_legend(override.aes = list(col = outline, fill = fill))) +
+    guides(alpha = guide_legend(override.aes = list(col = outline_color, fill = fill_color))) +
 
     scale_alpha_manual (values = seq(opacity_step, 1, opacity_step), name = "Year") +
-    scale_fill_manual  (values = fill,    guide = "none") +
-    scale_colour_manual(values = outline, guide = "none") +
+    scale_fill_manual  (values = fill_color,    guide = "none") +
+    scale_colour_manual(values = outline_color, guide = "none") +
 
     scale_x_discrete  (expand = c(0, 0.5)) +
     scale_y_continuous(expand = c(0, 0),
