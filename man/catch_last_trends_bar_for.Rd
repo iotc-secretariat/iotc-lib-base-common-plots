@@ -8,8 +8,8 @@ maximum number of user-provided categories) and uniformly colored with the provi
 catch_last_trends_bar_for(
   data,
   categorize_by = C_FLEET,
-  outline_color = "darkgrey",
-  fill_color = "darkgrey",
+  outline = "darkgrey",
+  fill = "darkgrey",
   max_categories = 4
 )
 }
@@ -18,9 +18,11 @@ catch_last_trends_bar_for(
 
 \item{categorize_by}{the data field to be used to categorize the annual catches}
 
-\item{outline_color}{the outline color to be used for all of the categories identified in the input data}
+\item{outline}{the outline color to be used for all of the categories identified in the input data}
 
-\item{fill_color}{the fill color to be used for all of the categories identified in the input data}
+\item{fill}{the fill color to be used for all of the categories identified in the input data}
+
+\item{max_categories}{the maximum number of categories to display}
 }
 \description{
 Produces a summary chart of annual catch trends (in the temporal range expressed by the input data) categorized according to a specific data field (with a
