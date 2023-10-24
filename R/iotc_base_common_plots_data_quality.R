@@ -112,6 +112,7 @@ data_quality_bar = function(data,
   if(show_percent_good_quality) {
     p = p +
       scale_y_continuous(
+        expand = c(0, 0),
         sec.axis = sec_axis(~. * 100 / cMaxx,
                             breaks = seq(0, 100, 10),
                             name = "% Catches fully or partially reported")
