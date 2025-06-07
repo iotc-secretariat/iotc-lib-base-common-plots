@@ -76,10 +76,14 @@ initialize_species_colors = function(category, species) {
 #'Initializes the species colors using the species category code as a basis
 #'@param connection A connection to \code{\link{IOTDB}}
 #'@export
-initialize_all_species_colors = function(connection = DB_IOTDB()) {
+initialize_all_species_colors = function(connection = NULL) {
   reset_species_colors()
 
-  species = all_species(connection)
+  species = if(!is.null(connection)){
+    all_species(connection)
+  }else{
+    iotc.data.reference.codelists::LEGACY_SPECIES
+  }
 
   initialize_species_colors_by_category(SC_BILLFISH, species)
   initialize_species_colors_by_category(SC_SEERFISH, species)
@@ -98,10 +102,14 @@ initialize_all_species_colors = function(connection = DB_IOTDB()) {
 #'Initializes the gear colors
 #'@param connection A connection to \code{\link{IOTDB}}
 #'@export
-initialize_all_gears_colors = function(connection = DB_IOTDB()) {
+initialize_all_gears_colors = function(connection = NULL) {
   reset_gear_colors()
 
-  gears  = all_codes("GEARS", connection)[USED == TRUE][order(+SORT)]
+  gears  = if(!is.null(connection)){
+    all_codes("GEARS", connection)[USED == TRUE][order(+SORT)]
+  }else{
+    iotc.data.reference.codelists::LEGACY_GEARS
+  }
   colors = unique_colors(nrow(gears))
 
   for(r in 1:nrow(gears)) {
