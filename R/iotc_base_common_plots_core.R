@@ -76,7 +76,7 @@ initialize_species_colors = function(category, species) {
 #'Initializes the species colors using the species category code as a basis
 #'@param connection A connection to \code{\link{IOTDB}}
 #'@export
-initialize_all_species_colors = function(connection = DB_IOTDB()) {
+initialize_all_species_colors = function(connection = iotc.core.db.connections::getDefaultDBIHandler()()) {
   reset_species_colors()
 
   species = if(!is.null(connection)){
@@ -102,7 +102,7 @@ initialize_all_species_colors = function(connection = DB_IOTDB()) {
 #'Initializes the gear colors
 #'@param connection A connection to \code{\link{IOTDB}}
 #'@export
-initialize_all_gears_colors = function(connection = DB_IOTDB()) {
+initialize_all_gears_colors = function(connection = iotc.core.db.connections::getDefaultDBIHandler()()) {
   reset_gear_colors()
 
   gears  = if(!is.null(connection)){
