@@ -82,7 +82,7 @@ initialize_all_species_colors = function(connection = DB_IOTDB()) {
   species = if(!is.null(connection)){
     all_species(connection)
   }else{
-    iotc.data.reference.codelists::LEGACY_SPECIES
+    iotc.data.reference.codelists::LEGACY_SPECIES_IOTDB
   }
 
   initialize_species_colors_by_category(SC_BILLFISH, species)
@@ -108,7 +108,7 @@ initialize_all_gears_colors = function(connection = DB_IOTDB()) {
   gears  = if(!is.null(connection)){
     all_codes("GEARS", connection)[USED == TRUE][order(+SORT)]
   }else{
-    iotc.data.reference.codelists::LEGACY_GEARS
+    iotc.data.reference.codelists::LEGACY_GEARS_IOTDB
   }
   colors = unique_colors(nrow(gears))
 
