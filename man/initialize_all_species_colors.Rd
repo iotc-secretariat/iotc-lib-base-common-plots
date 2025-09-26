@@ -4,7 +4,9 @@
 \alias{initialize_all_species_colors}
 \title{Initializes the species colors using the species category code as a basis}
 \usage{
-initialize_all_species_colors(connection = iotc.core.db.connections::getDefaultDBIHandler()())
+initialize_all_species_colors(
+  connection = (iotc.core.db.connections::getDefaultDBIHandler())()
+)
 }
 \arguments{
 \item{connection}{A connection to \code{\link{IOTDB}}}

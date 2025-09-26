@@ -4,7 +4,9 @@
 \alias{initialize_all_gears_colors}
 \title{Initializes the gear colors}
 \usage{
-initialize_all_gears_colors(connection = iotc.core.db.connections::getDefaultDBIHandler()())
+initialize_all_gears_colors(
+  connection = (iotc.core.db.connections::getDefaultDBIHandler())()
+)
 }
 \arguments{
 \item{connection}{A connection to \code{\link{IOTDB}}}
