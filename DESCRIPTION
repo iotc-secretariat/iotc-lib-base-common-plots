@@ -22,7 +22,7 @@ Depends:
   scatterpie,
   treemapify,
   iotc.core.gis.cwp (>= 0.2.1),
-  iotc.core.gis.maps.standalone (>= 0.2.1),
+  iotc.core.gis.maps (>= 0.2.1),
   iotc.core.utils.aes (>= 0.2.1),
   iotc.base.common.data (>= 0.2.2),
   iotc.data.reference.codelists
