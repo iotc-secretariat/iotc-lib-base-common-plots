@@ -18,7 +18,7 @@ geo_grid_piemap(
   use_centroid = TRUE,
   xlim = IO_map_xlim,
   ylim = IO_map_ylim,
-  show_IO = TRUE,
+  show_IO_areas = TRUE,
   show_EEZs = FALSE,
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
@@ -52,7 +52,7 @@ geo_grid_piemap(
 
 \item{ylim}{The map vertical limits (as a pair of latitude coordinates)}
 
-\item{show_IO}{when \code{TRUE}, the layers for F51 and F57 are plotted on the map}
+\item{show_IO_areas}{when \code{TRUE}, the layers for F51 and F57 are plotted on the map}
 
 \item{show_EEZs}{When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)}
 

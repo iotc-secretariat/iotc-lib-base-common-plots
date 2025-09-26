@@ -12,7 +12,7 @@
 #'@param user_centroid When \code{TRUE}, pies are centered in the centroid location of the fishing ground they belong to. This might markedly differ from the default center of a regular grid when this contains a sensible proportion of land mass
 #'@param xlim The map horizontal limits (as a pair of longitude coordinates)
 #'@param ylim The map vertical limits (as a pair of latitude coordinates)
-#'@param show_IO when \code{TRUE}, the layers for F51 and F57 are plotted on the map
+#'@param show_IO_areas when \code{TRUE}, the layers for F51 and F57 are plotted on the map
 #'@param show_EEZs When \code{TRUE}, the overall EEZ layer is plotted on the map (not showing explicit distinctions among different EEZs)
 #'@param show_high_seas When \code{TRUE}, the overall high seas layer is plotted on the map
 #'@param standard_grid Transforms the input data in order to only use grids of the provided \code{standard_grid} type (one among \{ \code{grid_1x1}, \code{grid_5x5}, \code{grid_10x10}, \code{grid_10x20}, \code{grid_20x20}, \code{grid_30x30} \}). The transformation is based on pre-calculated mappings (see \code{[IOTCStatistics].[dbo].[CL_FISHING_GROUND_AGGREGATIONS]}) and might lead to data loss if no mapping exists for some of the input grid codes.
@@ -34,7 +34,7 @@ geo_grid_piemap = function(data,
                            use_centroid = TRUE,
                            xlim = IO_map_xlim,
                            ylim = IO_map_ylim,
-                           show_IO = TRUE,
+                           show_IO_areas = TRUE,
                            show_EEZs = FALSE,
                            show_high_seas = FALSE,
                            standard_grid = grid_5x5,
@@ -129,7 +129,7 @@ geo_grid_piemap = function(data,
     IO_map(
       xlim = xlim,
       ylim = ylim,
-      show_IO = show_IO,
+      show_IO_areas = show_IO_areas,
       show_EEZs = show_EEZs,
       show_high_seas = show_high_seas) +
 

@@ -18,7 +18,7 @@ geo.grid.pie(
   use_centroid = TRUE,
   xlim = IO_map_xlim,
   ylim = IO_map_ylim,
-  show_IO = TRUE,
+  show_IO_areas = TRUE,
   show_EEZs = FALSE,
   show_high_seas = FALSE,
   standard_grid = grid_5x5,
