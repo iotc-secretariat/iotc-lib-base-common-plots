@@ -146,11 +146,11 @@ initialize_plot = function(data, aesthetics = NA, custom_theme = theme_bw) {
 
     theme(plot.margin = unit(c(5.5, 5.5, 5.5, 5.5), "points")) +
 
-    theme(#panel.grid.minor.x = element_line(size = 0.3, color = "lightgrey")
+    theme(#panel.grid.minor.x = element_line(linewidth = 0.3, color = "lightgrey")
           panel.grid.minor.x = element_blank(),
-          panel.grid.major.x = element_line(size = 0.3, color = "lightgrey"),
-          panel.grid.minor.y = element_line(size = 0.3, color = "lightgrey", linetype = "dashed"),
-          panel.grid.major.y = element_line(size = 0.3, color = "lightgrey"))
+          panel.grid.major.x = element_line(linewidth = 0.3, color = "lightgrey"),
+          panel.grid.minor.y = element_line(linewidth = 0.3, color = "lightgrey", linetype = "dashed"),
+          panel.grid.major.y = element_line(linewidth = 0.3, color = "lightgrey"))
 
   return (p)
 }
