@@ -62,14 +62,16 @@ initialize_species_colors_by_category = function(category, species, amount = 0.2
 initialize_species_colors = function(category, species) {
   species_for_category = species[SPECIES_CATEGORY_CODE == category]
 
-  colors = unique_colors(nrow(species_for_category))
+  if(nrow(species_for_category) > 0){
+    colors = unique_colors(nrow(species_for_category))
 
-  for(r in 1:nrow(species_for_category)) {
-    record = species_for_category[r]
+    for(r in 1:nrow(species_for_category)) {
+      record = species_for_category[r]
 
-    add_species_colors(record$CODE, colors[r])
+      add_species_colors(record$CODE, colors[r])
 
-    fill = lighten(colors[r], amount = 0.15)
+      fill = lighten(colors[r], amount = 0.15)
+    }
   }
 }
 
