@@ -99,7 +99,7 @@ value_line = function(data,
                                            color = FILL_BY,
                                            group = FILL_BY)) +
 
-    geom_line(size = 1)
+    geom_line(linewidth = 1)
 
   if(plot_points) {
     p = p +
@@ -213,7 +213,7 @@ value_line_rel = function(data,
                                            color = FILL_BY,
                                            group = FILL_BY)) +
 
-    geom_line(size = 1)
+    geom_line(linewidth = 1)
 
   if(plot_points) {
     p = p +
