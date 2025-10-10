@@ -90,7 +90,7 @@ value_bar = function(data,
     geom_bar(stat = "identity",
              position = "stack",
              width = 1,
-             size = .2) +
+             linewidth = .2) +
 
     scale_fill_manual  (values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
     scale_colour_manual(values = colors$OUTLINE, guide = guide_none())
@@ -196,7 +196,7 @@ value_bar_rel = function(data,
     geom_bar(stat = "identity",
              position = "stack",
              width = 1,
-             size = .2) +
+             linewidth = .2) +
 
     scale_fill_manual  (values = colors$FILL, labels = labels, guide = guide_legend(nrow = num_legend_rows)) +
     scale_colour_manual(values = colors$OUTLINE, guide = guide_none())
