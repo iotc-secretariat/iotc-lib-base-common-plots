@@ -67,7 +67,7 @@ catch_last_trends_bar = function(data,
     scale_y_continuous(expand = c(0, 0),
                        breaks = breaks_for(cMin, cMax),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },
-                       sec.axis = dup_axis(name = element_blank())) +
+                       sec.axis = dup_axis(name = "")) +
 
     coord_cartesian(ylim = limit_for(cMin, cMax)) +
 
@@ -158,7 +158,7 @@ catch_last_trends_bar_for = function(data, categorize_by = C_FLEET, outline = "d
     scale_y_continuous(expand = c(0, 0),
                        breaks = breaks_for(cMin, cMax),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },
-                       sec.axis = dup_axis(name = element_blank())) +
+                       sec.axis = dup_axis(name = "")) +
 
     coord_cartesian(ylim = limit_for(cMin, cMax)) +
 
