@@ -116,7 +116,7 @@ value_line = function(data,
     scale_y_continuous(expand = c(0, 0),
                        breaks = breaks_for(yMin, yMax),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },
-                       sec.axis = dup_axis(name = element_blank())) +
+                       sec.axis = dup_axis(name = "")) +
 
     coord_cartesian(ylim = limit_for(yMin, yMax)) +
 
@@ -230,7 +230,7 @@ value_line_rel = function(data,
     scale_y_continuous(expand = c(0, 0),
                        breaks = seq(0, 100, 10),
                        labels = function(x) { format(x, big.mark = ",", scientific = FALSE) },
-                       sec.axis = dup_axis(name = element_blank())) +
+                       sec.axis = dup_axis(name = "")) +
 
     coord_cartesian(ylim = limit_for(yMin, yMax)) +
 
