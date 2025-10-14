@@ -222,7 +222,7 @@ data_quality_line = function(data, data_set = "NC") {
     scale_y_continuous(expand = c(0, 0),
                        breaks = seq(0, 100, 10),
                        labels = function(x) { format(x, scientific = FALSE) },
-                       sec.axis = dup_axis(name = element_blank())) +
+                       sec.axis = dup_axis(name = "")) +
 
     coord_cartesian(ylim = c(0, 100)) +
 
