@@ -182,7 +182,7 @@ data_quality_line = function(data, data_set = "NC") {
     initialize_plot(data_all) +
 
     geom_line (data = data_all,
-               size = 1,
+               linewidth = 1,
                aes(color = "ALL",
                    x = YEAR,
                    y = PERCENT_GOOD)) +
@@ -193,7 +193,7 @@ data_quality_line = function(data, data_set = "NC") {
                    y = PERCENT_GOOD)) +
 
     geom_line (data = data_art,
-               size = 1,
+               linewidth = 1,
                aes(color = "ART",
                    x = YEAR,
                    y = PERCENT_GOOD)) +
@@ -204,7 +204,7 @@ data_quality_line = function(data, data_set = "NC") {
                    y = PERCENT_GOOD)) +
 
     geom_line (data = data_ind,
-               size = 1,
+               linewidth = 1,
                aes(color = "IND",
                    x = YEAR,
                    y = PERCENT_GOOD)) +
