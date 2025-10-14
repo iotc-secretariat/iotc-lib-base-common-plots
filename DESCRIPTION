@@ -2,7 +2,7 @@ Package: iotc.base.common.plots
 Type: Package
 Title: IOTC base functions for common data plotting and visualization
 Version: 0.2.2
-Author: Fabio Fiorellato <fabio.fiorellato@fao.org>
+Author: IOTC Secretariat <IOTC-Secretariat@fao.org>
 Maintainer: IOTC Secretariat <IOTC-Statistics@fao.org>
 Description: Provides convenience methods to ensure standardised plots for all IOTC working party-related charts, including:
     Catch time-series as stacked bar charts
