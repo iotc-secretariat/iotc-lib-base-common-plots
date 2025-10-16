@@ -63,7 +63,7 @@ size_ridges = function(data,
 
   p =
     ggplot(DATA, aesthetics) +
-    geom_density_ridges(size  = .5,
+    geom_density_ridges(linewidth  = .5,
                         #fill = fill,
                         #color = darken(outline, amount = 0.2),
                         #quantile_lines = TRUE,
