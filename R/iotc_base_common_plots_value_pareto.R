@@ -125,14 +125,12 @@ value_pareto = function(data,
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
       dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
       dplyr::mutate(
-        NAME_EN = if(is.na(NAME_EN)) ALL_OTHERS else NAME_EN,
-        CATEGORY = NAME_EN
+        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS)
       )
     data_by_category_all = data_by_category_all |>
       dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
       dplyr::mutate(
-        NAME_EN = if(is.na(NAME_EN)) ALL_OTHERS else NAME_EN,
-        CATEGORY = NAME_EN
+        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS)
       )
   }
 
