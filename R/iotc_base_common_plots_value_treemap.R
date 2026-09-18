@@ -75,7 +75,16 @@ value_treemap = function(data,
   p_data$LABEL = NA
 
   if(show_labels)
-    p_data$LABEL = as.character(p_data$FILL_BY)
+    p_data$LABEL = if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+      fill_by_codelist |>
+        dplyr::arrange(SORT) |>
+        dplyr::filter(!is.na(CODE)) |>
+        dplyr::filter(CODE %in% as.character(p_data$FILL_BY)) |>
+        dplyr::pull(NAME_EN) |>
+        collapse::funique()
+    }else{
+      as.character(p_data$FILL_BY)
+    }
 
   if(show_percentages && show_labels)
     p_data$LABEL = paste(p_data$LABEL, paste0("(", round(p_data$VALUE_PERC * 100, 1), "%", ")"))
