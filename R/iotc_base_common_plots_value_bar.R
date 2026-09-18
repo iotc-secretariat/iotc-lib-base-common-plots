@@ -73,7 +73,9 @@ value_bar = function(data,
   yMax = max(yData$VALUE)
 
   number_categories = length(unique(data$FILL_BY))
-
+  if(!is.null(fill_by_codelist) & is(fill_by_codelist, "try-error")){
+    fill_by_codelist = NULL
+  }
   if(!is.null(fill_by_codelist)){
     categories = fill_by_codelist |>
       dplyr::arrange(SORT) |>
