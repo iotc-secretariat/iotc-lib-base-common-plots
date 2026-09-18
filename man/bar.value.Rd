@@ -9,6 +9,7 @@ bar.value(
   value,
   time = C_YEAR,
   fill_by,
+  fill_by_codelist = NULL,
   max_categories = NA,
   colors = NA,
   num_legend_rows = NA,

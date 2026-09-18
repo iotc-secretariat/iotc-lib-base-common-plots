@@ -4,6 +4,8 @@
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param color_by The name of the column to be used to colorize the lines
+#'@param color_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param plot_points A flag to force plotting solid dots at each data point
@@ -19,6 +21,7 @@ value_line = function(data,
                       value,
                       time = C_YEAR,
                       color_by,
+                      color_by_codelist = NULL,
                       max_categories = NA,
                       colors = NA,
                       plot_points = FALSE,
@@ -82,9 +85,17 @@ value_line = function(data,
   yMin = min(data$VALUE)
   yMax = max(data$VALUE)
 
-  number_categories = length(unique(data$FILL_BY))
-
-  categories = as.character(sort(unique(data$FILL_BY)))
+  fill_by_values = collapse::funique(data$FILL_BY)
+  number_categories = length(fill_by_values)
+  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+    categories = fill_by_codelist |>
+      dplyr::arrange(SORT) |>
+      dplyr::filter(CODE %in% fill_by_values) |>
+      dplyr::pull(NAME_EN) |>
+      collapse::funique()
+  }else{
+    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+  }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
   else labels = categories
@@ -131,6 +142,8 @@ value_line = function(data,
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param color_by The name of the column to be used to colorize the line components
+#'@param color_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param plot_points A flag to force plotting solid dots at each data point
@@ -145,6 +158,7 @@ value_line_rel = function(data,
                           value,
                           time = C_YEAR,
                           color_by,
+                          color_by_codelist = NULL,
                           max_categories = NA,
                           colors = NA,
                           plot_points = FALSE,
@@ -196,9 +210,17 @@ value_line_rel = function(data,
   yMin = 0
   yMax = 100
 
-  number_categories = length(unique(data$FILL_BY))
-
-  categories = as.character(sort(unique(data$FILL_BY)))
+  fill_by_values = collapse::funique(data$FILL_BY)
+  number_categories = length(fill_by_values)
+  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+    categories = fill_by_codelist |>
+      dplyr::arrange(SORT) |>
+      dplyr::filter(CODE %in% fill_by_values) |>
+      dplyr::pull(NAME_EN) |>
+      collapse::funique()
+  }else{
+    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+  }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
   else labels = categories

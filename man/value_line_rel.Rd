@@ -10,6 +10,7 @@ value_line_rel(
   value,
   time = C_YEAR,
   color_by,
+  color_by_codelist = NULL,
   max_categories = NA,
   colors = NA,
   plot_points = FALSE,
@@ -28,6 +29,9 @@ value_line_rel(
 \item{time}{The name of the column representing the 'time' variable}
 
 \item{color_by}{The name of the column to be used to colorize the line components}
+
+\item{color_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.}
 
 \item{max_categories}{The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'}
 

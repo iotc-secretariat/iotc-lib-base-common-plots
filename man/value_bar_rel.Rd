@@ -10,6 +10,7 @@ value_bar_rel(
   value,
   time = C_YEAR,
   fill_by,
+  fill_by_category = NULL,
   max_categories = NA,
   colors = NA,
   num_legend_rows = NA,
@@ -41,6 +42,9 @@ value_bar_rel(
 \item{x_breaks_every}{The size of uniform breaks on the X axis}
 
 \item{trim_labels}{If \code{TRUE} trims all category labels to a maximum of 24 characters}
+
+\item{fill_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.}
 }
 \value{
 the plot corresponding to the given input parameters

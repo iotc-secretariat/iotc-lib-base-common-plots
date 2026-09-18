@@ -6,7 +6,11 @@ DARK_RED = darken(RED, amount = 0.2)
 #'@param data A data frame containing values by \code{C_YEAR} and at least two given factors (category / fill)
 #'@param value The name of the column holding the actual values
 #'@param categorize_by The name of the column to be used to assign labels to the bars
+#'@param categorize_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{categorize_by} with a labels columns, and to use a column representing codes only.
 #'@param fill_by The name of the column to be used to colorize the bar components
+#'@param fill_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.
 #'@param max_categories The maximum number of categories to display on the X axis (an "All other" category will be added at the end if required)
 #'@param max_fill_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
@@ -18,7 +22,9 @@ DARK_RED = darken(RED, amount = 0.2)
 value_pareto = function(data,
                         value,
                         categorize_by,
+                        categorize_by_codelist = NULL,
                         fill_by,
+                        fill_by_codelist = NULL,
                         max_categories = 5,
                         max_fill_categories = NA,
                         colors = NA,

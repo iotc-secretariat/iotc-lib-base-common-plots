@@ -9,6 +9,7 @@ line.value(
   value,
   time = C_YEAR,
   color_by,
+  color_by_codelist = NULL,
   max_categories = NA,
   colors = NA,
   plot_points = FALSE,
