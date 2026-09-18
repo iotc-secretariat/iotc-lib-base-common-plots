@@ -120,6 +120,22 @@ value_pareto = function(data,
   #Sets the order of the rows of the data by category and fill in descending value by category order
   setorderv(data_by_category_and_fill_all, "VALUE_BY_CATEGORY", 1)
 
+  #Map to codelists
+  if(!is.null(categorize_by_codelist) & !is(categorize_by_codelist, "try-error")){
+    data_by_category_and_fill_all = data_by_category_and_fill_all |>
+      dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
+      dplyr::mutate(
+        NAME_EN = if(is.na(NAME_EN)) ALL_OTHERS else NAME_EN,
+        CATEGORY = NAME_EN
+      )
+    data_by_category_all = data_by_category_all |>
+      dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
+      dplyr::mutate(
+        NAME_EN = if(is.na(NAME_EN)) ALL_OTHERS else NAME_EN,
+        CATEGORY = NAME_EN
+      )
+  }
+
   #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
   data_by_category_and_fill_all[, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
   data_by_category_all         [, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
