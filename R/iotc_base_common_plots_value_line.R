@@ -87,8 +87,8 @@ value_line = function(data,
 
   fill_by_values = collapse::funique(data$FILL_BY)
   number_categories = length(fill_by_values)
-  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
-    categories = fill_by_codelist |>
+  if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
+    categories = color_by_codelist |>
       dplyr::arrange(SORT) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
@@ -212,8 +212,8 @@ value_line_rel = function(data,
 
   fill_by_values = collapse::funique(data$FILL_BY)
   number_categories = length(fill_by_values)
-  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
-    categories = fill_by_codelist |>
+  if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
+    categories = color_by_codelist |>
       dplyr::arrange(SORT) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
