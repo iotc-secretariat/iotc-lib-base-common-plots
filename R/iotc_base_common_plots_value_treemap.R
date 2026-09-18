@@ -46,6 +46,8 @@ value_treemap = function(data,
 
     data = reduced$data
     colors = reduced$colors
+    print("DEBUGGGGGGGGG")
+    print(colors)
   }
 
   fill_by_values = collapse::funique(data$FILL_BY)
