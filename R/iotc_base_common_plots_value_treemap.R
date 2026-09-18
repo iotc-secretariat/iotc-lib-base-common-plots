@@ -52,6 +52,7 @@ value_treemap = function(data,
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
     categories = fill_by_codelist |>
       dplyr::arrange(SORT) |>
+      dplyr::filter(!is.na(CODE)) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
       collapse::funique()

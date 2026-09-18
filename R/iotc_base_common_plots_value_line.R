@@ -90,6 +90,7 @@ value_line = function(data,
   if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
     categories = color_by_codelist |>
       dplyr::arrange(SORT) |>
+      dplyr::filter(!is.na(CODE)) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
       collapse::funique()
@@ -215,6 +216,7 @@ value_line_rel = function(data,
   if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
     categories = color_by_codelist |>
       dplyr::arrange(SORT) |>
+      dplyr::filter(!is.na(CODE)) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
       collapse::funique()
