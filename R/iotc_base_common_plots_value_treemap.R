@@ -49,6 +49,7 @@ value_treemap = function(data,
   }
 
   fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = fill_by_values[!is.na(fill_by_values)]
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
     categories = fill_by_codelist |>
       dplyr::arrange(SORT) |>

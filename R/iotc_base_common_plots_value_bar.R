@@ -74,6 +74,7 @@ value_bar = function(data,
   yMax = max(yData$VALUE)
 
   fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = fill_by_values[!is.na(fill_by_values)]
   number_categories = length(fill_by_values)
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
     categories = fill_by_codelist |>
@@ -192,6 +193,7 @@ value_bar_rel = function(data,
   yMax = 100
 
   fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = fill_by_values[!is.na(fill_by_values)]
   number_categories = length(fill_by_values)
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
     categories = fill_by_codelist |>
