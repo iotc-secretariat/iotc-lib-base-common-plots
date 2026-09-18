@@ -17,7 +17,7 @@
 value_treemap = function(data,
                          value,
                          fill_by,
-                         fill_by_category = NULL,
+                         fill_by_codelist = NULL,
                          max_categories = NA,
                          colors = NA,
                          num_legend_rows = 2,

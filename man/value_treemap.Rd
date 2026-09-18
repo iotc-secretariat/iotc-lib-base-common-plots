@@ -9,6 +9,7 @@ value_treemap(
   data,
   value,
   fill_by,
+  fill_by_codelist = NULL,
   max_categories = NA,
   colors = NA,
   num_legend_rows = 2,
@@ -24,6 +25,9 @@ value_treemap(
 \item{value}{The name of the column holding the actual values}
 
 \item{fill_by}{The name of the column to be used to colorize the bar components}
+
+\item{fill_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.}
 
 \item{max_categories}{The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'}
 
