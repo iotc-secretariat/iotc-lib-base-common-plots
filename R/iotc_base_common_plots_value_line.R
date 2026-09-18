@@ -85,7 +85,7 @@ value_line = function(data,
   yMin = min(data$VALUE)
   yMax = max(data$VALUE)
 
-  fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = as.character(collapse::funique(data$FILL_BY, sort = T))
   fill_by_values = fill_by_values[!is.na(fill_by_values)]
   number_categories = length(fill_by_values)
   if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
@@ -95,8 +95,9 @@ value_line = function(data,
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
       collapse::funique()
+    if("All others" %in% fill_by_values) categories = c(categories, "All others")
   }else{
-    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+    categories = fill_by_values
   }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
@@ -212,7 +213,7 @@ value_line_rel = function(data,
   yMin = 0
   yMax = 100
 
-  fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = as.character(collapse::funique(data$FILL_BY, sort = T))
   fill_by_values = fill_by_values[!is.na(fill_by_values)]
   number_categories = length(fill_by_values)
   if(!is.null(color_by_codelist) & !is(color_by_codelist, "try-error")){
@@ -222,8 +223,9 @@ value_line_rel = function(data,
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
       collapse::funique()
+    if("All others" %in% fill_by_values) categories = c(categories, "All others")
   }else{
-    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+    categories = fill_by_values
   }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
