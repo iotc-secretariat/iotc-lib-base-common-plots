@@ -160,7 +160,10 @@ value_pareto = function(data,
         FILL_BY = dplyr::coalesce(FILL_NAME, ALL_OTHERS)
       ) |>
       dplyr::arrange(SORT) |>
-      dplyr::select(-c(SORT,FILL_NAME))
+      dplyr::mutate(
+        FILL_BY = factor(FILL_BY, levels = unique(FILL_BY))
+      ) |>
+      dplyr::select(-c(SORT, FILL_NAME))
   }
 
   if(is.na(num_legend_rows))
