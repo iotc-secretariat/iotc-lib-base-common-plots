@@ -120,6 +120,10 @@ value_pareto = function(data,
   #Sets the order of the rows of the data by category and fill in descending value by category order
   setorderv(data_by_category_and_fill_all, "VALUE_BY_CATEGORY", 1)
 
+  #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
+  data_by_category_and_fill_all[, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
+  data_by_category_all         [, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
+
   #Map to codelists
   if(!is.null(categorize_by_codelist) & !is(categorize_by_codelist, "try-error")){
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
@@ -134,17 +138,8 @@ value_pareto = function(data,
       )
   }
 
-  print("DIGGING")
-  print(collapse::funique(data_by_category_and_fill_all$CATEGORY))
-
-  #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
-  data_by_category_and_fill_all[, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
-  data_by_category_all         [, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
-
   if(is.na(num_legend_rows))
     num_legend_rows = calculate_legend_rows(length(colors))
-
-
 
   p =
     initialize_plot(data_by_category_and_fill_all) +
