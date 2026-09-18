@@ -6,7 +6,7 @@ DARK_RED = darken(RED, amount = 0.2)
 #'@param data A data frame containing values by \code{C_YEAR} and at least two given factors (category / fill)
 #'@param value The name of the column holding the actual values
 #'@param categorize_by The name of the column to be used to assign labels to the bars
-#'@param categorize_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'@param categorize_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{categorize_by} column labels. Mandatory columns: SORT
 #'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{categorize_by} with a labels columns, and to use a column representing codes only.
 #'@param fill_by The name of the column to be used to colorize the bar components
 #'@param fill_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
@@ -140,6 +140,9 @@ value_pareto = function(data,
 
   if(is.na(num_legend_rows))
     num_legend_rows = calculate_legend_rows(length(colors))
+
+  print("DIGGING")
+  print(collapse::funique(data_by_category_and_fill_all$CATEGORY))
 
   p =
     initialize_plot(data_by_category_and_fill_all) +
