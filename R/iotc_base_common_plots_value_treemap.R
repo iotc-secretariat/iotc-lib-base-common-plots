@@ -76,12 +76,12 @@ value_treemap = function(data,
 
   if(show_labels)
     p_data$LABEL = if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
-      fill_by_codelist |>
+      c(fill_by_codelist |>
         dplyr::arrange(SORT) |>
         dplyr::filter(!is.na(CODE)) |>
         dplyr::filter(CODE %in% as.character(p_data$FILL_BY)) |>
-        dplyr::pull(CODE) |>
-        collapse::funique()
+        dplyr::pull(NAME_EN) |>
+        collapse::funique(), "All others")
     }else{
       as.character(p_data$FILL_BY)
     }
