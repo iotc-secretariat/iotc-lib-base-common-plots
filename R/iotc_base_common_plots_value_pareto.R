@@ -160,7 +160,7 @@ value_pareto = function(data,
         FILL_BY = dplyr::coalesce(FILL_NAME, ALL_OTHERS)
       ) |>
       dplyr::select(-FILL_NAME)
-    data_by_category_and_fill_all = data_by_category_and_fill_all |>
+    data_by_category_all = data_by_category_all |>
       dplyr::left_join(
         dplyr::select(fill_by_codelist, CODE, FILL_NAME = NAME_EN),
         dplyr::join_by(FILL_BY == CODE)
