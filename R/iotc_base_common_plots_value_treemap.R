@@ -46,8 +46,6 @@ value_treemap = function(data,
 
     data = reduced$data
     colors = reduced$colors
-    print("DEBUGGGGGGGGG")
-    print(colors)
   }
 
   fill_by_values = collapse::funique(data$FILL_BY)
@@ -82,7 +80,7 @@ value_treemap = function(data,
         dplyr::arrange(SORT) |>
         dplyr::filter(!is.na(CODE)) |>
         dplyr::filter(CODE %in% as.character(p_data$FILL_BY)) |>
-        dplyr::pull(NAME_EN) |>
+        dplyr::pull(CODE) |>
         collapse::funique()
     }else{
       as.character(p_data$FILL_BY)

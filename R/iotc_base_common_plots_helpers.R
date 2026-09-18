@@ -76,10 +76,8 @@ do_shrink_categories = function(data, post_shrinker, colors, colors_are_custom =
 
   if(needs_shrinking) {
     data = do_initialize_shrink_categories(data, max_categories)
-    print("DIGGING or PLOTING!!!!")
-    print(collapse::funique(data$FILL_BY))
+
     data = post_shrinker(data)
-    print(collapse::funique(data$FILL_BY))
   }
 
   current_categories = unique(data[FILL_BY != "All others"]$FILL_BY)
