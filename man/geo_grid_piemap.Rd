@@ -8,6 +8,7 @@ geo_grid_piemap(
   data,
   value,
   fill_by,
+  fill_by_codelist = NULL,
   yearly_average = TRUE,
   max_categories = NA,
   reference_value = NA,
@@ -33,6 +34,9 @@ geo_grid_piemap(
 \item{value}{The name of the column (in \code{data}) that contains the value to plot}
 
 \item{fill_by}{The name of the column (in \code{data} that contains the categories)}
+
+\item{fill_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.}
 
 \item{yearly_average}{If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)}
 

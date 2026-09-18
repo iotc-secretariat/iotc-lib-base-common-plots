@@ -2,6 +2,8 @@
 #'@param data The data (shall contain a \code{C_FISHING_GROUND_CODE} column)
 #'@param value The name of the column (in \code{data}) that contains the value to plot
 #'@param fill_by The name of the column (in \code{data} that contains the categories)
+#'@param fill_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+#'CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{fill_by} with a labels columns, and to use a column representing codes only.
 #'@param yearly_average If \code{TRUE} uses the yearly average to plot the pies (assuming that the input data contains a \code{C_YEAR} column)
 #'@param reference_value The reference value for the standard pie. If not specified, it will be assumed to equal the 99\% of all values
 #'@param unit The value unit (for display purposes)
@@ -24,6 +26,7 @@
 geo_grid_piemap = function(data,
                            value,
                            fill_by,
+                           fill_by_codelist = NULL,
                            yearly_average = TRUE,
                            max_categories = NA,
                            reference_value = NA,
@@ -77,7 +80,20 @@ geo_grid_piemap = function(data,
   #When required, performs the conversion of input grid codes to standardized ones
   if(!is.na(standard_grid)) data = spatially_disaggregate_geo(data, standard_grid)
 
-  categories = as.character(sort(unique(data$FILL_BY)))
+  fill_by_values = as.character(collapse::funique(data$FILL_BY, sort = T))
+  fill_by_values = fill_by_values[!is.na(fill_by_values)]
+  number_categories = length(fill_by_values)
+  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+    categories = fill_by_codelist |>
+      dplyr::arrange(SORT) |>
+      dplyr::filter(!is.na(CODE)) |>
+      dplyr::filter(CODE %in% fill_by_values) |>
+      dplyr::pull(NAME_EN) |>
+      collapse::funique()
+    if("All others" %in% fill_by_values) categories = c(categories, "All others")
+  }else{
+    categories = fill_by_values
+  }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
   else labels = categories
@@ -93,7 +109,20 @@ geo_grid_piemap = function(data,
                                   FISHING_GROUND_CODE = data[1]$FISHING_GROUND_CODE,
                                   VALUE = 0.0))
 
-    categories = as.character(sort(unique(data$FILL_BY)))
+    fill_by_values = as.character(collapse::funique(data$FILL_BY, sort = T))
+    fill_by_values = fill_by_values[!is.na(fill_by_values)]
+    number_categories = length(fill_by_values)
+    if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+      categories = fill_by_codelist |>
+        dplyr::arrange(SORT) |>
+        dplyr::filter(!is.na(CODE)) |>
+        dplyr::filter(CODE %in% fill_by_values) |>
+        dplyr::pull(NAME_EN) |>
+        collapse::funique()
+      if("All others" %in% fill_by_values) categories = c(categories, "All others")
+    }else{
+      categories = fill_by_values
+    }
     labels     = unlist(lapply(categories, strlen_max_labels))
 
     extra_color = colors[1]

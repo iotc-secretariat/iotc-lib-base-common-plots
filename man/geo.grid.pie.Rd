@@ -8,6 +8,7 @@ geo.grid.pie(
   data,
   value,
   fill_by,
+  fill_by_codelist = NULL,
   yearly_average = TRUE,
   max_categories = NA,
   reference_value = NA,

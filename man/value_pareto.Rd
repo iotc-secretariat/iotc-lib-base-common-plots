@@ -27,7 +27,7 @@ value_pareto(
 
 \item{categorize_by}{The name of the column to be used to assign labels to the bars}
 
-\item{categorize_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels. Mandatory columns: SORT
+\item{categorize_by_codelist}{a \link[data.table]{data.table} object representing the codelist to be used for the \code{categorize_by} column labels. Mandatory columns: SORT
 CODE and NAME_EN. This parameter allows passing a codelist to avoid using \code{categorize_by} with a labels columns, and to use a column representing codes only.}
 
 \item{fill_by}{The name of the column to be used to colorize the bar components}
