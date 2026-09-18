@@ -4,6 +4,7 @@
 #'@param value The name of the column holding the actual values
 #'@param time The name of the column representing the 'time' variable
 #'@param fill_by The name of the column to be used to colorize the bar components
+#'@param fill_by_codelist a \link[data.table]{data.table} object representing the codelist to be used for the \code{fill_by} column labels
 #'@param max_categories The number of maximum distinct categories (from the \code{fill_by} column) to be kept in the result. Everything else will be aggregated as 'All others'
 #'@param colors A data frame containing the colors (FILL and OUTLINE) for the factors, if set to \code{NA} these will be determined by the \code{FILL_BY} parameter
 #'@param num_legend_rows The number of rows to display in the legend
@@ -18,6 +19,7 @@ value_bar = function(data,
                      value,
                      time = C_YEAR,
                      fill_by,
+                     fill_by_codelist = NULL,
                      max_categories = NA,
                      colors = NA,
                      num_legend_rows = NA,
@@ -72,7 +74,16 @@ value_bar = function(data,
 
   number_categories = length(unique(data$FILL_BY))
 
-  categories = as.character(sort(unique(data$FILL_BY)))
+  if(!is.null(fill_by_codelist)){
+    categories = fill_by_codelist |>
+      dplyr::arrange(SORT) |>
+      dplyr::filter(CODE %in% as.character(collapse::funique(data$FILL_BY, sort = T))) |>
+      dplyr::pull(NAME_EN) |>
+      collapse::funique()
+    print(categories)
+  }else{
+    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+  }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
   else labels = categories
