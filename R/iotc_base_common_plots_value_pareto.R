@@ -122,7 +122,7 @@ value_pareto = function(data,
 
   #Map to codelists
   if(!is.null(categorize_by_codelist) & !is(categorize_by_codelist, "try-error")){
-    category_levels = c(categorize_by_codelist[.(CODE = main_categories), on = "CODE", NAME_EN], ALL_OTHERS)
+    category_levels = c(categorize_by_codelist[.(CODE = major_categories), on = "CODE", NAME_EN], ALL_OTHERS)
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
       dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
       dplyr::mutate(
