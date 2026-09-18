@@ -125,14 +125,14 @@ value_pareto = function(data,
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
       dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
       dplyr::mutate(
-        CATEGORY = factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)
-        #CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS)
+        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS),
+        CATEGORY = factor(CATEGORY, levels = c(categorize_by_codelist[.(CODE = main_categories), on = "CODE", NAME_EN], ALL_OTHERS), ordered = TRUE)
       )
     data_by_category_all = data_by_category_all |>
       dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
       dplyr::mutate(
-        CATEGORY = factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)
-        #CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS)
+        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS),
+        CATEGORY = factor(CATEGORY, levels = c(categorize_by_codelist[.(CODE = main_categories), on = "CODE", NAME_EN], ALL_OTHERS), ordered = TRUE)
       )
   }else{
     #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
