@@ -120,25 +120,55 @@ value_pareto = function(data,
   #Sets the order of the rows of the data by category and fill in descending value by category order
   setorderv(data_by_category_and_fill_all, "VALUE_BY_CATEGORY", 1)
 
-  #Map to codelists
+  #Map CATEGORY to codelist
   if(!is.null(categorize_by_codelist) & !is(categorize_by_codelist, "try-error")){
     category_levels = c(categorize_by_codelist[.(CODE = major_categories), on = "CODE", NAME_EN], ALL_OTHERS)
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
-      dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
+      dplyr::left_join(
+        dplyr::select(categorize_by_codelist, CODE, CATEGORY_NAME = NAME_EN),
+        dplyr::join_by(CATEGORY == CODE)
+      ) |>
       dplyr::mutate(
-        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS),
+        CATEGORY = dplyr::coalesce(CATEGORY_NAME, ALL_OTHERS),
         CATEGORY = factor(CATEGORY, levels = category_levels, ordered = TRUE)
-      )
+      ) |>
+      dplyr::select(-CATEGORY_NAME)
     data_by_category_all = data_by_category_all |>
-      dplyr::left_join(categorize_by_codelist, dplyr::join_by(CATEGORY == CODE)) |>
+      dplyr::left_join(
+        dplyr::select(categorize_by_codelist, CODE, CATEGORY_NAME = NAME_EN),
+        dplyr::join_by(CATEGORY == CODE)
+      ) |>
       dplyr::mutate(
-        CATEGORY = dplyr::coalesce(NAME_EN, ALL_OTHERS),
+        CATEGORY = dplyr::coalesce(CATEGORY_NAME, ALL_OTHERS),
         CATEGORY = factor(CATEGORY, levels = category_levels, ordered = TRUE)
-      )
+      ) |>
+      dplyr::select(-CATEGORY_NAME)
   }else{
     #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
     data_by_category_and_fill_all[, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
     data_by_category_all         [, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
+  }
+
+  #Map FILL_BY to codelist
+  if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
+    data_by_category_and_fill_all = data_by_category_and_fill_all |>
+      dplyr::left_join(
+        dplyr::select(fill_by_codelist, CODE, FILL_NAME = NAME_EN),
+        dplyr::join_by(FILL_BY == CODE)
+      ) |>
+      dplyr::mutate(
+        FILL_BY = dplyr::coalesce(FILL_NAME, ALL_OTHERS)
+      ) |>
+      dplyr::select(-FILL_NAME)
+    data_by_category_and_fill_all = data_by_category_and_fill_all |>
+      dplyr::left_join(
+        dplyr::select(fill_by_codelist, CODE, FILL_NAME = NAME_EN),
+        dplyr::join_by(FILL_BY == CODE)
+      ) |>
+      dplyr::mutate(
+        FILL_BY = dplyr::coalesce(FILL_NAME, ALL_OTHERS)
+      ) |>
+      dplyr::select(-FILL_NAME)
   }
 
   if(is.na(num_legend_rows))
