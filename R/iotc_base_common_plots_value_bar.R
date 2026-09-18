@@ -40,6 +40,9 @@ value_bar = function(data,
   colnames(data)[which(colnames(data) == fill_by)] = "FILL_BY"
   colnames(colors)[which(colnames(colors) == fill_by)] = "FILL_BY"
 
+  print(fill_by)
+  print(colnames(data))
+
   data = data[, .(VALUE = sum(VALUE)), keyby = .(TIME, FILL_BY)]
 
   if(!is.na(max_categories)) {
@@ -74,6 +77,7 @@ value_bar = function(data,
 
   print(colnames(data))
   fill_by_values = collapse::funique(data$FILL_BY)
+  print(fill_by_values)
   print(colnames(data))
   number_categories = length(fill_by_values)
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
