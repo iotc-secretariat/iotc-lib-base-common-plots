@@ -153,13 +153,14 @@ value_pareto = function(data,
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
     data_by_category_and_fill_all = data_by_category_and_fill_all |>
       dplyr::left_join(
-        dplyr::select(fill_by_codelist, CODE, FILL_NAME = NAME_EN),
+        dplyr::select(fill_by_codelist, SORT, CODE, FILL_NAME = NAME_EN),
         dplyr::join_by(FILL_BY == CODE)
       ) |>
       dplyr::mutate(
         FILL_BY = dplyr::coalesce(FILL_NAME, ALL_OTHERS)
       ) |>
-      dplyr::select(-FILL_NAME)
+      dplyr::arrange(SORT) |>
+      dplyr::select(-c(SORT,FILL_NAME))
   }
 
   if(is.na(num_legend_rows))
