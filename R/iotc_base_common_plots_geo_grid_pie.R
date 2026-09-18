@@ -102,6 +102,16 @@ geo_grid_piemap = function(data,
       ) |>
       dplyr::select(-c(SORT, FILL_NAME))
 
+    colors = colors |>
+      dplyr::left_join(
+        fill_by_codelist |> dplyr::select(SORT, CODE, FILL_NAME = NAME_EN),
+        dplyr::join_by(FILL_BY == CODE)
+      ) |>
+      dplyr::mutate(
+        FILL_BY = dplyr::coalesce(FILL_NAME, "All others")
+      ) |>
+      dplyr::select(-c(SORT, FILL_NAME))
+
   }else{
     categories = fill_by_values
   }
