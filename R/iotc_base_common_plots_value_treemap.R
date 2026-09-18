@@ -48,17 +48,18 @@ value_treemap = function(data,
     colors = reduced$colors
   }
 
-  fill_by_values = collapse::funique(data$FILL_BY)
+  fill_by_values = as.character(collapse::funique(data$FILL_BY, sort = T))
   fill_by_values = fill_by_values[!is.na(fill_by_values)]
   if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
-    categories = c(fill_by_codelist |>
+    categories = fill_by_codelist |>
       dplyr::arrange(SORT) |>
       dplyr::filter(!is.na(CODE)) |>
       dplyr::filter(CODE %in% fill_by_values) |>
       dplyr::pull(NAME_EN) |>
-      collapse::funique(), "All others")
+      collapse::funique()
+    if("All others" %in% fill_by_values) categories = c(categories, "All others")
   }else{
-    categories = as.character(collapse::funique(data$FILL_BY, sort = T))
+    categories = fill_by_values
   }
 
   if(trim_labels) { labels = unlist(lapply(categories, strlen_max_labels)) }
@@ -76,12 +77,14 @@ value_treemap = function(data,
 
   if(show_labels)
     p_data$LABEL = if(!is.null(fill_by_codelist) & !is(fill_by_codelist, "try-error")){
-      c(fill_by_codelist |>
+      p = fill_by_codelist |>
         dplyr::arrange(SORT) |>
         dplyr::filter(!is.na(CODE)) |>
         dplyr::filter(CODE %in% as.character(p_data$FILL_BY)) |>
         dplyr::pull(NAME_EN) |>
-        collapse::funique(), "All others")
+        collapse::funique()
+      if("All others" %in% p_data$FILL_BY) p = c(p, "All others")
+      p
     }else{
       as.character(p_data$FILL_BY)
     }
