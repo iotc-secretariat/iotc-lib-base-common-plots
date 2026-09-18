@@ -134,6 +134,9 @@ value_pareto = function(data,
       )
   }
 
+  print("DIGGING")
+  print(collapse::funique(data_by_category_and_fill_all$CATEGORY))
+
   #Factorizes the category column in the data by category and fill / data by category according to the major categories ordering
   data_by_category_and_fill_all[, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
   data_by_category_all         [, CATEGORY := factor(CATEGORY, levels = c(major_categories, ALL_OTHERS), ordered = TRUE)]
@@ -141,8 +144,7 @@ value_pareto = function(data,
   if(is.na(num_legend_rows))
     num_legend_rows = calculate_legend_rows(length(colors))
 
-  print("DIGGING")
-  print(collapse::funique(data_by_category_and_fill_all$CATEGORY))
+
 
   p =
     initialize_plot(data_by_category_and_fill_all) +
